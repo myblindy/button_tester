@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="button tester">
+</Property><Property Name="Solution File" Value="D:\marius\c#\button tester\button tester.sln">
+</Property><Property Name="User Options File" Value="D:\marius\c#\button tester\button tester.suo">
+</Property><Property Name="Date" Value="Wednesday, April 14, 2010">
+</Property><Property Name="Time" Value="3:02 AM">
+</Property></Properties><Event ErrorLevel="0" Project="" Source="button tester.sln" Description="File successfully backed up as D:\marius\c#\button tester\Backup\button tester.sln">
+</Event><Event ErrorLevel="0" Project="" Source="button tester.suo" Description="File successfully backed up as D:\marius\c#\button tester\Backup\button tester.suo">
+</Event><Event ErrorLevel="0" Project="button tester" Source="button tester\button tester.csproj" Description="Project file successfully backed up as D:\marius\c#\button tester\Backup\button tester\button tester.csproj">
+</Event><Event ErrorLevel="0" Project="button tester" Source="button tester\button tester.csproj.user" Description="Project user file successfully backed up as D:\marius\c#\button tester\Backup\button tester\button tester.csproj.user">
+</Event><Event ErrorLevel="0" Project="button tester" Source="button tester\AboutBox.cs" Description="File successfully backed up as D:\marius\c#\button tester\Backup\button tester\AboutBox.cs">
+</Event><Event ErrorLevel="0" Project="button tester" Source="button tester\AboutBox.Designer.cs" Description="File successfully backed up as D:\marius\c#\button tester\Backup\button tester\AboutBox.Designer.cs">
+</Event><Event ErrorLevel="0" Project="button tester" Source="button tester\AutoCompleteExpressionBox.cs" Description="File successfully backed up as D:\marius\c#\button tester\Backup\button tester\AutoCompleteExpressionBox.cs">
+</Event><Event ErrorLevel="0" Project="button tester" Source="button tester\AutoCompleteExpressionBox.Designer.cs" Description="File successfully backed up as D:\marius\c#\button tester\Backup\button tester\AutoCompleteExpressionBox.Designer.cs">
+</Event><Event ErrorLevel="0" Project="button tester" Source="button tester\AutoCompleteExpressionBoxCustomization.cs" Description="File successfully backed up as D:\marius\c#\button tester\Backup\button tester\AutoCompleteExpressionBoxCustomization.cs">
+</Event><Event ErrorLevel="0" Project="button tester" Source="button tester\AutoCompleteExpressionBoxCustomization.Designer.cs" Description="File successfully backed up as D:\marius\c#\button tester\Backup\button tester\AutoCompleteExpressionBoxCustomization.Designer.cs">
+</Event><Event ErrorLevel="0" Project="button tester" Source="button tester\AutoCompleteExpressionBoxCustomizationEdit.cs" Description="File successfully backed up as D:\marius\c#\button tester\Backup\button tester\AutoCompleteExpressionBoxCustomizationEdit.cs">
+</Event><Event ErrorLevel="0" Project="button tester" Source="button tester\AutoCompleteExpressionBoxCustomizationEdit.Designer.cs" Description="File successfully backed up as D:\marius\c#\button tester\Backup\button tester\AutoCompleteExpressionBoxCustomizationEdit.Designer.cs">
+</Event><Event ErrorLevel="0" Project="button tester" Source="button tester\frmEditButton.cs" Description="File successfully backed up as D:\marius\c#\button tester\Backup\button tester\frmEditButton.cs">
+</Event><Event ErrorLevel="0" Project="button tester" Source="button tester\frmEditButton.Designer.cs" Description="File successfully backed up as D:\marius\c#\button tester\Backup\button tester\frmEditButton.Designer.cs">
+</Event><Event ErrorLevel="0" Project="button tester" Source="button tester\frmEditPriority.cs" Description="File successfully backed up as D:\marius\c#\button tester\Backup\button tester\frmEditPriority.cs">
+</Event><Event ErrorLevel="0" Project="button tester" Source="button tester\frmEditPriority.Designer.cs" Description="File successfully backed up as D:\marius\c#\button tester\Backup\button tester\frmEditPriority.Designer.cs">
+</Event><Event ErrorLevel="0" Project="button tester" Source="button tester\frmEditTestSet.cs" Description="File successfully backed up as D:\marius\c#\button tester\Backup\button tester\frmEditTestSet.cs">
+</Event><Event ErrorLevel="0" Project="button tester" Source="button tester\frmEditTestSet.Designer.cs" Description="File successfully backed up as D:\marius\c#\button tester\Backup\button tester\frmEditTestSet.Designer.cs">
+</Event><Event ErrorLevel="0" Project="button tester" Source="button tester\frmMain.cs" Description="File successfully backed up as D:\marius\c#\button tester\Backup\button tester\frmMain.cs">
+</Event><Event ErrorLevel="0" Project="button tester" Source="button tester\frmMain.Designer.cs" Description="File successfully backed up as D:\marius\c#\button tester\Backup\button tester\frmMain.Designer.cs">
+</Event><Event ErrorLevel="0" Project="button tester" Source="button tester\frmEdit.cs" Description="File successfully backed up as D:\marius\c#\button tester\Backup\button tester\frmEdit.cs">
+</Event><Event ErrorLevel="0" Project="button tester" Source="button tester\frmEdit.Designer.cs" Description="File successfully backed up as D:\marius\c#\button tester\Backup\button tester\frmEdit.Designer.cs">
+</Event><Event ErrorLevel="0" Project="button tester" Source="button tester\frmMockUp.cs" Description="File successfully backed up as D:\marius\c#\button tester\Backup\button tester\frmMockUp.cs">
+</Event><Event ErrorLevel="0" Project="button tester" Source="button tester\frmMockUp.designer.cs" Description="File successfully backed up as D:\marius\c#\button tester\Backup\button tester\frmMockUp.designer.cs">
+</Event><Event ErrorLevel="0" Project="button tester" Source="button tester\frmOptions.cs" Description="File successfully backed up as D:\marius\c#\button tester\Backup\button tester\frmOptions.cs">
+</Event><Event ErrorLevel="0" Project="button tester" Source="button tester\frmOptions.Designer.cs" Description="File successfully backed up as D:\marius\c#\button tester\Backup\button tester\frmOptions.Designer.cs">
+</Event><Event ErrorLevel="0" Project="button tester" Source="button tester\Program.cs" Description="File successfully backed up as D:\marius\c#\button tester\Backup\button tester\Program.cs">
+</Event><Event ErrorLevel="0" Project="button tester" Source="button tester\Properties\AssemblyInfo.cs" Description="File successfully backed up as D:\marius\c#\button tester\Backup\button tester\Properties\AssemblyInfo.cs">
+</Event><Event ErrorLevel="0" Project="button tester" Source="button tester\Properties\Resources.Designer.cs" Description="File successfully backed up as D:\marius\c#\button tester\Backup\button tester\Properties\Resources.Designer.cs">
+</Event><Event ErrorLevel="0" Project="button tester" Source="button tester\Properties\Settings.Designer.cs" Description="File successfully backed up as D:\marius\c#\button tester\Backup\button tester\Properties\Settings.Designer.cs">
+</Event><Event ErrorLevel="0" Project="button tester" Source="button tester\SerializableDictionary.cs" Description="File successfully backed up as D:\marius\c#\button tester\Backup\button tester\SerializableDictionary.cs">
+</Event><Event ErrorLevel="0" Project="button tester" Source="button tester\Settings.cs" Description="File successfully backed up as D:\marius\c#\button tester\Backup\button tester\Settings.cs">
+</Event><Event ErrorLevel="0" Project="button tester" Source="button tester\TestExpression.cs" Description="File successfully backed up as D:\marius\c#\button tester\Backup\button tester\TestExpression.cs">
+</Event><Event ErrorLevel="0" Project="button tester" Source="button tester\Util.cs" Description="File successfully backed up as D:\marius\c#\button tester\Backup\button tester\Util.cs">
+</Event><Event ErrorLevel="0" Project="button tester" Source="button tester\Properties\Settings.settings" Description="File successfully backed up as D:\marius\c#\button tester\Backup\button tester\Properties\Settings.settings">
+</Event><Event ErrorLevel="0" Project="button tester" Source="button tester\Resources\NewDocument.bmp" Description="File successfully backed up as D:\marius\c#\button tester\Backup\button tester\Resources\NewDocument.bmp">
+</Event><Event ErrorLevel="0" Project="button tester" Source="button tester\Resources\Open.bmp" Description="File successfully backed up as D:\marius\c#\button tester\Backup\button tester\Resources\Open.bmp">
+</Event><Event ErrorLevel="0" Project="button tester" Source="button tester\Resources\OpenFolder.bmp" Description="File successfully backed up as D:\marius\c#\button tester\Backup\button tester\Resources\OpenFolder.bmp">
+</Event><Event ErrorLevel="0" Project="button tester" Source="button tester\Resources\Save.bmp" Description="File successfully backed up as D:\marius\c#\button tester\Backup\button tester\Resources\Save.bmp">
+</Event><Event ErrorLevel="0" Project="button tester" Source="button tester\Resources\InsertPage.bmp" Description="File successfully backed up as D:\marius\c#\button tester\Backup\button tester\Resources\InsertPage.bmp">
+</Event><Event ErrorLevel="0" Project="button tester" Source="button tester\Resources\EditInformation.bmp" Description="File successfully backed up as D:\marius\c#\button tester\Backup\button tester\Resources\EditInformation.bmp">
+</Event><Event ErrorLevel="0" Project="button tester" Source="button tester\Resources\Cut.bmp" Description="File successfully backed up as D:\marius\c#\button tester\Backup\button tester\Resources\Cut.bmp">
+</Event><Event ErrorLevel="0" Project="button tester" Source="button tester\Resources\CopyHL.bmp" Description="File successfully backed up as D:\marius\c#\button tester\Backup\button tester\Resources\CopyHL.bmp">
+</Event><Event ErrorLevel="0" Project="button tester" Source="button tester\Resources\CopyHS.png" Description="File successfully backed up as D:\marius\c#\button tester\Backup\button tester\Resources\CopyHS.png">
+</Event><Event ErrorLevel="0" Project="button tester" Source="button tester\Resources\CutHS.png" Description="File successfully backed up as D:\marius\c#\button tester\Backup\button tester\Resources\CutHS.png">
+</Event><Event ErrorLevel="0" Project="button tester" Source="button tester\Resources\PasteHS.png" Description="File successfully backed up as D:\marius\c#\button tester\Backup\button tester\Resources\PasteHS.png">
+</Event><Event ErrorLevel="0" Project="button tester" Source="button tester\Resources\DeleteHS.png" Description="File successfully backed up as D:\marius\c#\button tester\Backup\button tester\Resources\DeleteHS.png">
+</Event><Event ErrorLevel="0" Project="button tester" Source="button tester\Resources\FillUpHS.png" Description="File successfully backed up as D:\marius\c#\button tester\Backup\button tester\Resources\FillUpHS.png">
+</Event><Event ErrorLevel="0" Project="button tester" Source="button tester\Resources\FillDownHS.png" Description="File successfully backed up as D:\marius\c#\button tester\Backup\button tester\Resources\FillDownHS.png">
+</Event><Event ErrorLevel="0" Project="button tester" Source="button tester\Resources\FormRunHS.png" Description="File successfully backed up as D:\marius\c#\button tester\Backup\button tester\Resources\FormRunHS.png">
+</Event><Event ErrorLevel="0" Project="button tester" Source="button tester\Resources\StopHS.png" Description="File successfully backed up as D:\marius\c#\button tester\Backup\button tester\Resources\StopHS.png">
+</Event><Event ErrorLevel="0" Project="button tester" Source="button tester\Resources\Help.png" Description="File successfully backed up as D:\marius\c#\button tester\Backup\button tester\Resources\Help.png">
+</Event><Event ErrorLevel="0" Project="button tester" Source="button tester\Resources\openHS.png" Description="File successfully backed up as D:\marius\c#\button tester\Backup\button tester\Resources\openHS.png">
+</Event><Event ErrorLevel="0" Project="button tester" Source="button tester\Resources\FormRunHS_red.png" Description="File successfully backed up as D:\marius\c#\button tester\Backup\button tester\Resources\FormRunHS_red.png">
+</Event><Event ErrorLevel="0" Project="button tester" Source="button tester\Resources\personalization.png" Description="File successfully backed up as D:\marius\c#\button tester\Backup\button tester\Resources\personalization.png">
+</Event><Event ErrorLevel="0" Project="button tester" Source="button tester\Resources\OptionsHS.png" Description="File successfully backed up as D:\marius\c#\button tester\Backup\button tester\Resources\OptionsHS.png">
+</Event><Event ErrorLevel="0" Project="button tester" Source="button tester\preferences.ico" Description="File successfully backed up as D:\marius\c#\button tester\Backup\button tester\preferences.ico">
+</Event><Event ErrorLevel="0" Project="button tester" Source="button tester\services.ico" Description="File successfully backed up as D:\marius\c#\button tester\Backup\button tester\services.ico">
+</Event><Event ErrorLevel="0" Project="button tester" Source="button tester\AboutBox.resx" Description="File successfully backed up as D:\marius\c#\button tester\Backup\button tester\AboutBox.resx">
+</Event><Event ErrorLevel="0" Project="button tester" Source="button tester\AutoCompleteExpressionBox.resx" Description="File successfully backed up as D:\marius\c#\button tester\Backup\button tester\AutoCompleteExpressionBox.resx">
+</Event><Event ErrorLevel="0" Project="button tester" Source="button tester\AutoCompleteExpressionBoxCustomization.resx" Description="File successfully backed up as D:\marius\c#\button tester\Backup\button tester\AutoCompleteExpressionBoxCustomization.resx">
+</Event><Event ErrorLevel="0" Project="button tester" Source="button tester\AutoCompleteExpressionBoxCustomizationEdit.resx" Description="File successfully backed up as D:\marius\c#\button tester\Backup\button tester\AutoCompleteExpressionBoxCustomizationEdit.resx">
+</Event><Event ErrorLevel="0" Project="button tester" Source="button tester\frmEdit.resx" Description="File successfully backed up as D:\marius\c#\button tester\Backup\button tester\frmEdit.resx">
+</Event><Event ErrorLevel="0" Project="button tester" Source="button tester\frmEditButton.resx" Description="File successfully backed up as D:\marius\c#\button tester\Backup\button tester\frmEditButton.resx">
+</Event><Event ErrorLevel="0" Project="button tester" Source="button tester\frmEditPriority.resx" Description="File successfully backed up as D:\marius\c#\button tester\Backup\button tester\frmEditPriority.resx">
+</Event><Event ErrorLevel="0" Project="button tester" Source="button tester\frmEditTestSet.resx" Description="File successfully backed up as D:\marius\c#\button tester\Backup\button tester\frmEditTestSet.resx">
+</Event><Event ErrorLevel="0" Project="button tester" Source="button tester\frmMain.resx" Description="File successfully backed up as D:\marius\c#\button tester\Backup\button tester\frmMain.resx">
+</Event><Event ErrorLevel="0" Project="button tester" Source="button tester\frmMockUp.resx" Description="File successfully backed up as D:\marius\c#\button tester\Backup\button tester\frmMockUp.resx">
+</Event><Event ErrorLevel="0" Project="button tester" Source="button tester\frmOptions.resx" Description="File successfully backed up as D:\marius\c#\button tester\Backup\button tester\frmOptions.resx">
+</Event><Event ErrorLevel="0" Project="button tester" Source="button tester\Properties\Resources.resx" Description="File successfully backed up as D:\marius\c#\button tester\Backup\button tester\Properties\Resources.resx">
+</Event><Event ErrorLevel="0" Project="button tester" Source="button tester\button tester.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="button tester" Source="button tester\button tester.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="button tester.sln" Description="Solution converted successfully">
+</Event><Event ErrorLevel="3" Project="" Source="button tester.sln" Description="Converted">
+</Event><Event ErrorLevel="0" Project="button tester" Source="button tester\button tester.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event></UpgradeLog>

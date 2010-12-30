@@ -1,0 +1,46 @@
+D:\marius\c#\button tester\button tester\obj\Debug Mockup\ResolveAssemblyReference.cache
+D:\marius\c#\button tester\button tester\obj\Debug Mockup\button_tester.frmEdit.resources
+D:\marius\c#\button tester\button tester\obj\Debug Mockup\button_tester.frmEditButton.resources
+D:\marius\c#\button tester\button tester\obj\Debug Mockup\button_tester.frmEditPriority.resources
+D:\marius\c#\button tester\button tester\obj\Debug Mockup\button_tester.frmMain.resources
+D:\marius\c#\button tester\button tester\obj\Debug Mockup\button_tester.frmOptions.resources
+D:\marius\c#\button tester\button tester\obj\Debug Mockup\button_tester.Properties.Resources.resources
+D:\marius\c#\button tester\button tester\bin\Debug Mockup\button tester.exe
+D:\marius\c#\button tester\button tester\bin\Debug Mockup\LJDotNet.dll
+D:\marius\c#\button tester\button tester\obj\Debug Mockup\button tester.exe
+D:\marius\c#\button tester\button tester\obj\Debug Mockup\button_tester.frmEditTestSet.resources
+D:\marius\c#\button tester\button tester\bin\Debug Mockup\button tester.pdb
+D:\marius\c#\button tester\button tester\obj\Debug Mockup\button tester.pdb
+D:\marius\c#\button tester\button tester\obj\Debug Mockup\button_tester.AutoCompleteExpressionBox.resources
+D:\marius\c#\button tester\button tester\obj\Debug Mockup\button_tester.AutoCompleteExpressionBoxCustomization.resources
+D:\marius\c#\button tester\button tester\obj\Debug Mockup\button_tester.AutoCompleteExpressionBoxCustomizationEdit.resources
+D:\marius\c#\button tester\button tester\obj\Debug Mockup\button_tester.frmMockUp.resources
+D:\marius\c#\button tester\button tester\obj\Debug Mockup\button_tester.AboutBox.resources
+D:\marius\c#\button tester\button tester\obj\Debug Mockup\GenerateResource-ResGen.read.1.tlog
+D:\marius\c#\button tester\button tester\obj\Debug Mockup\GenerateResource-ResGen.write.1.tlog
+D:\marius\c#\button tester\button tester\bin\Debug Mockup\Button Tester.exe.config
+D:\marius\c#\button tester\button tester\obj\Debug Mockup\button_tester.frmEditLink.resources
+E:\marius\c#\button tester\button tester\bin\Debug Mockup\Button Tester.exe.config
+E:\marius\c#\button tester\button tester\obj\Debug Mockup\Button Tester.exe
+E:\marius\c#\button tester\button tester\obj\Debug Mockup\Button Tester.pdb
+E:\marius\c#\button tester\button tester\bin\Debug Mockup\Button Tester.exe
+E:\marius\c#\button tester\button tester\bin\Debug Mockup\Button Tester.pdb
+E:\marius\c#\button tester\button tester\bin\Debug Mockup\LJDotNet.dll
+E:\marius\c#\button tester\button tester\obj\Debug Mockup\ResolveAssemblyReference.cache
+E:\marius\c#\button tester\button tester\obj\Debug Mockup\button_tester.AboutBox.resources
+E:\marius\c#\button tester\button tester\obj\Debug Mockup\button_tester.AutoCompleteExpressionBox.resources
+E:\marius\c#\button tester\button tester\obj\Debug Mockup\button_tester.AutoCompleteExpressionBoxCustomization.resources
+E:\marius\c#\button tester\button tester\obj\Debug Mockup\button_tester.AutoCompleteExpressionBoxCustomizationEdit.resources
+E:\marius\c#\button tester\button tester\obj\Debug Mockup\button_tester.frmEdit.resources
+E:\marius\c#\button tester\button tester\obj\Debug Mockup\button_tester.frmEditButton.resources
+E:\marius\c#\button tester\button tester\obj\Debug Mockup\button_tester.frmEditLink.resources
+E:\marius\c#\button tester\button tester\obj\Debug Mockup\button_tester.frmEditPriority.resources
+E:\marius\c#\button tester\button tester\obj\Debug Mockup\button_tester.frmEditTestSet.resources
+E:\marius\c#\button tester\button tester\obj\Debug Mockup\button_tester.frmMain.resources
+E:\marius\c#\button tester\button tester\obj\Debug Mockup\button_tester.frmMockUp.resources
+E:\marius\c#\button tester\button tester\obj\Debug Mockup\button_tester.frmOptions.resources
+E:\marius\c#\button tester\button tester\obj\Debug Mockup\button_tester.Properties.Resources.resources
+E:\marius\c#\button tester\button tester\obj\Debug Mockup\GenerateResource-ResGen.read.1.tlog
+E:\marius\c#\button tester\button tester\obj\Debug Mockup\GenerateResource.read.1.tlog
+E:\marius\c#\button tester\button tester\obj\Debug Mockup\GenerateResource-ResGen.write.1.tlog
+E:\marius\c#\button tester\button tester\obj\Debug Mockup\GenerateResource.write.1.tlog

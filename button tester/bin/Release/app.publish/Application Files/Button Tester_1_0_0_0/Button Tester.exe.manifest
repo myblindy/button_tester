@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1">
+  <asmv1:assemblyIdentity name="Button Tester.exe" version="1.0.0.0" publicKeyToken="d803806f56507637" language="neutral" processorArchitecture="msil" type="win32" />
+  <description asmv2:iconFile="services.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
+  <application />
+  <entryPoint>
+    <assemblyIdentity name="Button Tester" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+    <commandLine file="Button Tester.exe" parameters="" />
+  </entryPoint>
+  <trustInfo>
+    <security>
+      <applicationRequestMinimum>
+        <PermissionSet Unrestricted="true" ID="Custom" SameSite="site" />
+        <defaultAssemblyRequest permissionSetReference="Custom" />
+      </applicationRequestMinimum>
+      <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
+        <!--
+          UAC Manifest Options
+          If you want to change the Windows User Account Control level replace the 
+          requestedExecutionLevel node with one of the following.
+
+        <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
+        <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
+        <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
+
+         If you want to utilize File and Registry Virtualization for backward 
+         compatibility then delete the requestedExecutionLevel node.
+    -->
+        <requestedExecutionLevel level="asInvoker" uiAccess="false" />
+      </requestedPrivileges>
+    </security>
+  </trustInfo>
+  <dependency>
+    <dependentOS>
+      <osVersionInfo>
+        <os majorVersion="5" minorVersion="1" buildNumber="2600" servicePackMajor="0" />
+      </osVersionInfo>
+    </dependentOS>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Microsoft.Windows.CommonLanguageRuntime" version="4.0.30319.0" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Button Tester.exe" size="190976">
+      <assemblyIdentity name="Button Tester" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>qux8BZe8OxbbNV+IqOY4zfxtVC0=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="LJDotNet.dll" size="20480">
+      <assemblyIdentity name="LJDotNet" version="1.0.1858.28841" language="neutral" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>OuNJccjOImdq+fv9POVv7fmQWEQ=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <file name="Button Tester.exe.config" size="144">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>cpzNzlRjZspwKGLNlX6RAlU3880=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="preferences.ico" size="14846">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>o2jyIqHbkfBbTUygc/uT8arDkJI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="services.ico" size="2862">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>jXiEL8h5UKP1fTbvaJiRrFFTng4=</dsig:DigestValue>
+    </hash>
+  </file>
+<publisherIdentity name="CN=marius\twt" issuerKeyHash="3cf66faf37f4f569dbd41bd639ff4fcd1600b5b4" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" /><DigestValue>tdbOsa+z/uWf0YLgvqnrJ5amajU=</DigestValue></Reference></SignedInfo><SignatureValue>cQCtRruUshlmCAge0GXxBu1NF4sjlt+LYuGZOcsrvAiiFQXuQOOuhJ8GxVDNUW+N3/H6lBSZWgae37KYz0GQ16Mi36X5SjCh8XUpSgWCjxj1pyvhW7tL2UUbXBhXfW8ON9Rdiv1gvbwr2xwSuOuVRKZl+JA7HcbcbTDejKHPbHQ=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>q/WW/ij5TzNJUetmTEIjsk5FMMiqfcEB+dFCbjFdDdoXBrQ4OEg84T/WmYpcuiWTLoqAH8ostQfZ+a2FSO9foPO6vtBA3CnbgjJWACyuTmgkbO9DGu9D23wXr4r5GSYOGniFqMU0rJqmD+YUU1lAIBlTsq0z7J4nojwgojNmGxc=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="356aa69627eba9bee082d19fe5feb3afb1ced6b5" Description="" Url=""><as:assemblyIdentity name="Button Tester.exe" version="1.0.0.0" publicKeyToken="d803806f56507637" language="neutral" processorArchitecture="msil" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=marius\twt</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" /><DigestValue>5qhX7ABv82a8pvrADeZU87z5Gw0=</DigestValue></Reference></SignedInfo><SignatureValue>LJBBgEpQdsbdHZ6Xyt2CIkO0lNqsOr8OeMPi9VwEeNhtXNcDinE0c382FQ4ILDqwnB1jcZSyfUp2ZrJhY6oAT9JJGy3O8izrmxmptrjJSy6jq5uyTbE5xQCkudcn1DLF7rN3p/lO+GMSX84/qozBVnNlRCFvH4zdee23FWDKQmU=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>q/WW/ij5TzNJUetmTEIjsk5FMMiqfcEB+dFCbjFdDdoXBrQ4OEg84T/WmYpcuiWTLoqAH8ostQfZ+a2FSO9foPO6vtBA3CnbgjJWACyuTmgkbO9DGu9D23wXr4r5GSYOGniFqMU0rJqmD+YUU1lAIBlTsq0z7J4nojwgojNmGxc=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIBwTCCASqgAwIBAgIQHZnYHRC1nJ1CL2lEd7WwvTANBgkqhkiG9w0BAQUFADAfMR0wGwYDVQQDHhQAbQBhAHIAaQB1AHMAXAB0AHcAdDAeFw0xMDEyMjQyMzU2NThaFw0xMTEyMjUwNTU2NThaMB8xHTAbBgNVBAMeFABtAGEAcgBpAHUAcwBcAHQAdwB0MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCr9Zb+KPlPM0lR62ZMQiOyTkUwyKp9wQH50UJuMV0N2hcGtDg4SDzhP9aZily6JZMuioAfyiy1B9n5rYVI71+g87q+0EDcKduCMlYALK5OaCRs70Ma70PbfBevivkZJg4aeIWoxTSsmqYP5hRTWUAgGVOyrTPsnieiPCCiM2YbFwIDAQABMA0GCSqGSIb3DQEBBQUAA4GBADOpKqBkFUPIaTHs8OIZIxnFhvlYR8uDCoclDpYowJpXU50hRGRbXlfGWTsFMnu0PHxkr4xqgx/orgp9eH8sahIFo0IA9xTvzSiF8d9naQ0+KmbP6HmXQAlDFCVRY9d0FV8TZhF1iCDwYKQ/VeWN8tAQAhRlpUNguZQEA0tcsiDW</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>
