@@ -32,6 +32,8 @@ namespace button_tester
             txtZeroToleranceLow.Text = settings.Payload.ZeroToleranceLow.ToString();
             txtZeroToleranceHigh.Text = settings.Payload.ZeroToleranceHigh.ToString();
 
+            chkReverseDirection.Checked = settings.Payload.ReverseDirection;
+
             txtCounterChangeCap.Text = (settings.Payload.LastCounterChangeMovementCap / 1000.0).ToString();
 
             txtPowerOffPin.Text = settings.Payload.PowerOffPin.ToString();
@@ -147,6 +149,7 @@ namespace button_tester
                 settings.Payload.PowerOffPin = poff;
                 settings.Payload.ZeroToleranceLow = zerol;
                 settings.Payload.ZeroToleranceHigh = zeroh;
+                settings.Payload.ReverseDirection = chkReverseDirection.Checked;
 
                 settings.Payload.LastCounterChangeMovementCap = countercap * 1000.0;
 

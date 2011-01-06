@@ -51,13 +51,16 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.txtWaitBetweenAnalogChanges = new System.Windows.Forms.TextBox();
+            this.txtCounterChangeCap = new System.Windows.Forms.TextBox();
             this.chkWaitBetweenAnalogChanges = new System.Windows.Forms.CheckBox();
             this.chkStopOnErrors = new System.Windows.Forms.CheckBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.cmbOutputTickChannel = new System.Windows.Forms.ComboBox();
             this.txtStopAtCycles = new System.Windows.Forms.TextBox();
             this.chkOutputTick = new System.Windows.Forms.CheckBox();
             this.chkStopAtCycles = new System.Windows.Forms.CheckBox();
+            this.txtCycleCondition = new button_tester.AutoCompleteExpressionBox();
             this.lblCondition = new System.Windows.Forms.Label();
             this.chkUseCycles = new System.Windows.Forms.CheckBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -107,9 +110,7 @@
             this.btnRemoveLink = new System.Windows.Forms.Button();
             this.btnAddLink = new System.Windows.Forms.Button();
             this.lstLinks = new System.Windows.Forms.ListBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.txtCounterChangeCap = new System.Windows.Forms.TextBox();
-            this.txtCycleCondition = new button_tester.AutoCompleteExpressionBox();
+            this.chkReverseDirection = new System.Windows.Forms.CheckBox();
             this.groupBox2.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -325,6 +326,7 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.chkReverseDirection);
             this.groupBox4.Controls.Add(this.txtWaitBetweenAnalogChanges);
             this.groupBox4.Controls.Add(this.txtCounterChangeCap);
             this.groupBox4.Controls.Add(this.chkWaitBetweenAnalogChanges);
@@ -345,6 +347,14 @@
             this.txtWaitBetweenAnalogChanges.Size = new System.Drawing.Size(52, 20);
             this.txtWaitBetweenAnalogChanges.TabIndex = 2;
             // 
+            // txtCounterChangeCap
+            // 
+            this.txtCounterChangeCap.Location = new System.Drawing.Point(283, 13);
+            this.txtCounterChangeCap.Name = "txtCounterChangeCap";
+            this.txtCounterChangeCap.Size = new System.Drawing.Size(47, 20);
+            this.txtCounterChangeCap.TabIndex = 4;
+            this.txtCounterChangeCap.Text = "100";
+            // 
             // chkWaitBetweenAnalogChanges
             // 
             this.chkWaitBetweenAnalogChanges.Location = new System.Drawing.Point(9, 42);
@@ -364,6 +374,14 @@
             this.chkStopOnErrors.TabIndex = 0;
             this.chkStopOnErrors.Text = "Stop on Test Errors";
             this.chkStopOnErrors.UseVisualStyleBackColor = true;
+            // 
+            // label10
+            // 
+            this.label10.Location = new System.Drawing.Point(152, 16);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(130, 29);
+            this.label10.TabIndex = 0;
+            this.label10.Text = "Time from last counter change while still moving:";
             // 
             // groupBox5
             // 
@@ -439,6 +457,14 @@
             this.chkStopAtCycles.Text = "Stop at                    cycles.";
             this.chkStopAtCycles.UseVisualStyleBackColor = true;
             this.chkStopAtCycles.CheckedChanged += new System.EventHandler(this.chkStopAtCycles_CheckedChanged);
+            // 
+            // txtCycleCondition
+            // 
+            this.txtCycleCondition.Enabled = false;
+            this.txtCycleCondition.Location = new System.Drawing.Point(70, 19);
+            this.txtCycleCondition.Name = "txtCycleCondition";
+            this.txtCycleCondition.Size = new System.Drawing.Size(263, 31);
+            this.txtCycleCondition.TabIndex = 2;
             // 
             // lblCondition
             // 
@@ -940,29 +966,14 @@
             this.lstLinks.Size = new System.Drawing.Size(158, 147);
             this.lstLinks.TabIndex = 0;
             // 
-            // label10
+            // chkReverseDirection
             // 
-            this.label10.Location = new System.Drawing.Point(152, 16);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(130, 29);
-            this.label10.TabIndex = 0;
-            this.label10.Text = "Time from last counter change while still moving:";
-            // 
-            // txtCounterChangeCap
-            // 
-            this.txtCounterChangeCap.Location = new System.Drawing.Point(283, 13);
-            this.txtCounterChangeCap.Name = "txtCounterChangeCap";
-            this.txtCounterChangeCap.Size = new System.Drawing.Size(47, 20);
-            this.txtCounterChangeCap.TabIndex = 4;
-            this.txtCounterChangeCap.Text = "100";
-            // 
-            // txtCycleCondition
-            // 
-            this.txtCycleCondition.Enabled = false;
-            this.txtCycleCondition.Location = new System.Drawing.Point(70, 19);
-            this.txtCycleCondition.Name = "txtCycleCondition";
-            this.txtCycleCondition.Size = new System.Drawing.Size(263, 31);
-            this.txtCycleCondition.TabIndex = 2;
+            this.chkReverseDirection.Location = new System.Drawing.Point(273, 43);
+            this.chkReverseDirection.Name = "chkReverseDirection";
+            this.chkReverseDirection.Size = new System.Drawing.Size(70, 30);
+            this.chkReverseDirection.TabIndex = 5;
+            this.chkReverseDirection.Text = "Reverse Direction";
+            this.chkReverseDirection.UseVisualStyleBackColor = true;
             // 
             // frmOptions
             // 
@@ -1083,5 +1094,6 @@
         private System.Windows.Forms.CheckBox chkAI2;
         private System.Windows.Forms.TextBox txtCounterChangeCap;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.CheckBox chkReverseDirection;
     }
 }

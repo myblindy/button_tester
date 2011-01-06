@@ -224,6 +224,8 @@ namespace button_tester
 
             public SerializableDictionary<int, int> Links { get; set; }
 
+            public bool ReverseDirection { get; set; }
+
             public enum HysteresisKind
             {
                 Humidity,

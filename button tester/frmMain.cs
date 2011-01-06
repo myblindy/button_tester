@@ -517,6 +517,7 @@ namespace button_tester
                         float ai0 = LJ.ReadAnalogInput(0);
                         int sign = (ai0 < settings.Payload.ZeroToleranceLow) ? -1 :
                             ((ai0 > settings.Payload.ZeroToleranceHigh) ? 1 : 0);
+                        sign *= settings.Payload.ReverseDirection ? -1 : 1;
 
                         // adjust the sign if we put a cap on movement
                         if (settings.Payload.LastCounterChangeMovementCap > 0)
