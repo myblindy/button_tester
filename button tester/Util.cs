@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using lj;
+using System.Runtime.InteropServices;
 
 namespace button_tester
 {
@@ -185,5 +185,90 @@ namespace button_tester
         {
             return pid >= 0 && pid <= 16;
         }
+
+        #region LabJAck
+        public class LabJack
+        {
+            [DllImport("ljackuw.dll", CharSet = CharSet.Ansi)]
+            public static extern int AIBurst(ref int idnum, int demo, int stateIOin, int updateIO, int ledOn, int numChannels, [In, Out] int[] channels, [In, Out] int[] gains, ref float scanRate, int disableCal, int triggerIO, int triggerState, int numScans, int timeout, [In, Out] float[,] voltages, [In, Out] int[] stateIOout, ref int overVoltage, int transferMode);
+            [DllImport("ljackuw.dll", CharSet = CharSet.Ansi)]
+            public static extern int AISample(ref int idnum, int demo, ref int stateIO, int updateIO, int ledOn, int numChannels, [In, Out] int[] channels, [In, Out] int[] gains, int disableCal, ref int overVoltage, [In, Out] float[] voltages);
+            [DllImport("ljackuw.dll", CharSet = CharSet.Ansi)]
+            public static extern int AIStreamClear(int localID);
+            [DllImport("ljackuw.dll", CharSet = CharSet.Ansi)]
+            public static extern int AIStreamRead(int localID, int numScans, int timeout, [In, Out] float[,] voltages, [In, Out] int[] stateIOout, ref int reserved, ref int ljScanBacklog, ref int overVoltage);
+            [DllImport("ljackuw.dll", CharSet = CharSet.Ansi)]
+            public static extern int AIStreamStart(ref int idnum, int demo, int stateIOin, int updateIO, int ledOn, int numChannels, [In, Out] int[] channels, [In, Out] int[] gains, ref float scanRate, int disableCal, int reserved1, int readCount);
+            [DllImport("ljackuw.dll", CharSet = CharSet.Ansi)]
+            public static extern int AOUpdate(ref int idnum, int demo, int trisD, int trisIO, ref int stateD, ref int stateIO, int updateDigital, int resetCounter, ref uint count, float analogOut0, float analogOut1);
+            [DllImport("ljackuw.dll", CharSet = CharSet.Ansi)]
+            public static extern int Asynch(ref int idnum, int demo, int portB, int enableTE, int enableTO, int enableDel, int baudrate, int numWrite, int numRead, [In, Out] int[] data);
+            [DllImport("ljackuw.dll", CharSet = CharSet.Ansi)]
+            public static extern int AsynchConfig(ref int idnum, int demo, int timeoutMult, int configA, int configB, int configTE, int fullA, int fullB, int fullC, int halfA, int halfB, int halfC);
+            [DllImport("ljackuw.dll", CharSet = CharSet.Ansi)]
+            public static extern int BitsToVolts(int chnum, int chgain, int bits, ref float volts);
+            [DllImport("ljackuw.dll", CharSet = CharSet.Ansi)]
+            public static extern int Counter(ref int idnum, int demo, ref int stateD, ref int stateIO, int resetCounter, int enableSTB, ref uint count);
+            [DllImport("ljackuw.dll", CharSet = CharSet.Ansi)]
+            public static extern int DigitalIO(ref int idnum, int demo, ref int trisD, int trisIO, ref int stateD, ref int stateIO, int updateDigital, ref int outputD);
+            [DllImport("ljackuw.dll", CharSet = CharSet.Ansi)]
+            public static extern int EAnalogIn(ref int idnum, int demo, int channel, int gain, ref int overVoltage, ref float voltage);
+            [DllImport("ljackuw.dll", CharSet = CharSet.Ansi)]
+            public static extern int EAnalogOut(ref int idnum, int demo, float analogOut0, float analogOut1);
+            [DllImport("ljackuw.dll", CharSet = CharSet.Ansi)]
+            public static extern int ECount(ref int idnum, int demo, int resetCounter, ref double count, ref double ms);
+            [DllImport("ljackuw.dll", CharSet = CharSet.Ansi)]
+            public static extern int EDigitalIn(ref int idnum, int demo, int channel, int readD, ref int state);
+            [DllImport("ljackuw.dll", CharSet = CharSet.Ansi)]
+            public static extern int EDigitalOut(ref int idnum, int demo, int channel, int writeD, int state);
+            [DllImport("ljackuw.dll", CharSet = CharSet.Ansi)]
+            public static extern float GetDriverVersion();
+            [DllImport("ljackuw.dll", CharSet = CharSet.Ansi)]
+            public static extern void GetErrorString(int errorCode, StringBuilder errorString);
+            [DllImport("ljackuw.dll", CharSet = CharSet.Ansi)]
+            public static extern void GetErrorString(int errorcode, [In, Out] char[] errorString);
+            [DllImport("ljackuw.dll", CharSet = CharSet.Ansi)]
+            public static extern float GetFirmwareVersion(ref int idnum);
+            [DllImport("ljackuw.dll", CharSet = CharSet.Ansi)]
+            public static extern int GetWinVersion(ref uint majorVersion, ref uint minorVersion, ref uint buildNumber, ref uint platformID, ref uint servicePackMajor, ref uint servicePackMinor);
+            [DllImport("ljackuw.dll", CharSet = CharSet.Ansi)]
+            public static extern int ListAll([In, Out] int[] productIDList, [In, Out] int[] serialNumList, [In, Out] int[] localIDList, [In, Out] int[] powerList, [In, Out] int[,] calMatrix, ref int numFound, ref int reserved1, ref int reserved2);
+            [DllImport("ljackuw.dll", CharSet = CharSet.Ansi)]
+            public static extern int LocalID(ref int idnum, int localID);
+            [DllImport("ljackuw.dll", CharSet = CharSet.Ansi)]
+            public static extern int NoThread(ref int idnum, int noThread);
+            [DllImport("ljackuw.dll", CharSet = CharSet.Ansi)]
+            public static extern int PulseOut(ref int idnum, int demo, int lowFirst, int bitSelect, int numPulses, int timeB1, int timeC1, int timeB2, int timeC2);
+            [DllImport("ljackuw.dll", CharSet = CharSet.Ansi)]
+            public static extern int PulseOutCalc(ref float frequency, ref int timeB, ref int timeC);
+            [DllImport("ljackuw.dll", CharSet = CharSet.Ansi)]
+            public static extern int PulseOutFinish(ref int idnum, int demo, int timeoutMS);
+            [DllImport("ljackuw.dll", CharSet = CharSet.Ansi)]
+            public static extern int PulseOutStart(ref int idnum, int demo, int lowFirst, int bitSelect, int numPulses, int timeB1, int timeC1, int timeB2, int timeC2);
+            [DllImport("ljackuw.dll", CharSet = CharSet.Ansi)]
+            public static extern int ReadMem(ref int idnum, int address, ref int data3, ref int data2, ref int data1, ref int data0);
+            [DllImport("ljackuw.dll", CharSet = CharSet.Ansi)]
+            public static extern int ReEnum(ref int idnum);
+            [DllImport("ljackuw.dll", CharSet = CharSet.Ansi)]
+            public static extern int Reset(ref int idnum);
+            [DllImport("ljackuw.dll", CharSet = CharSet.Ansi)]
+            public static extern int ResetLJ(ref int idnum);
+            [DllImport("ljackuw.dll", CharSet = CharSet.Ansi)]
+            public static extern int SHT1X(ref int idnum, int demo, int softComm, int mode, int statusReg, ref float tempC, ref float tempF, ref float rh);
+            [DllImport("ljackuw.dll", CharSet = CharSet.Ansi)]
+            public static extern int SHTComm(ref int idnum, int softComm, int waitMeas, int serialReset, int dataRate, int numWrite, int numRead, [In, Out] byte[] datatx, [In, Out] byte[] datarx);
+            [DllImport("ljackuw.dll", CharSet = CharSet.Ansi)]
+            public static extern int SHTCRC(int statusReg, int numWrite, int numRead, [In, Out] byte[] datatx, [In, Out] byte[] datarx);
+            [DllImport("ljackuw.dll", CharSet = CharSet.Ansi)]
+            public static extern int Synch(ref int idnum, int demo, int mode, int msDelay, int husDelay, int controlCS, int csLine, int csState, int configD, int numWriteRead, [In, Out] int[] data);
+            [DllImport("ljackuw.dll", CharSet = CharSet.Ansi)]
+            public static extern int VoltsToBits(int chnum, int chgain, float volts, ref int bits);
+            [DllImport("ljackuw.dll", CharSet = CharSet.Ansi)]
+            public static extern int Watchdog(ref int idnum, int demo, int active, int timeout, int reset, int activeD0, int activeD1, int activeD8, int stateD0, int stateD1, int stateD8);
+            [DllImport("ljackuw.dll", CharSet = CharSet.Ansi)]
+            public static extern int WriteMem(ref int idnum, int unlocked, int address, int data3, int data2, int data1, int data0);
+        }
+        #endregion
+
     }
 }

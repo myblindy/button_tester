@@ -164,6 +164,12 @@ namespace button_tester
 
         private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
         {
+            if (MessageBox.Show("Are you sure you want to quit?", "Button Tester", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+            {
+                e.Cancel = true;
+                return;
+            }
+
             if (mnuStop.Enabled)
             {
                 mnuStop_Click(null, null);

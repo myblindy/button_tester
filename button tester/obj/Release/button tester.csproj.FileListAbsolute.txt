@@ -21,8 +21,8 @@ D:\marius\c#\button tester\button tester\obj\Release\button_tester.frmEditLink.r
 D:\marius\c#\button tester\button tester\obj\Release\GenerateResource.read.1.tlog
 D:\marius\c#\button tester\button tester\obj\Release\GenerateResource.write.1.tlog
 E:\marius\c#\button tester\button tester\bin\Release\Button Tester.exe.config
-E:\marius\c#\button tester\button tester\obj\Release\Button Tester.exe
-E:\marius\c#\button tester\button tester\obj\Release\Button Tester.pdb
+E:\marius\c#\button tester\button tester\bin\Release\Button Tester.exe.manifest
+E:\marius\c#\button tester\button tester\bin\Release\Button Tester.application
 E:\marius\c#\button tester\button tester\bin\Release\Button Tester.exe
 E:\marius\c#\button tester\button tester\bin\Release\Button Tester.pdb
 E:\marius\c#\button tester\button tester\bin\Release\LJDotNet.dll
@@ -42,7 +42,7 @@ E:\marius\c#\button tester\button tester\obj\Release\button_tester.frmOptions.re
 E:\marius\c#\button tester\button tester\obj\Release\button_tester.Properties.Resources.resources
 E:\marius\c#\button tester\button tester\obj\Release\GenerateResource.read.1.tlog
 E:\marius\c#\button tester\button tester\obj\Release\GenerateResource.write.1.tlog
-E:\marius\c#\button tester\button tester\bin\Release\Button Tester.exe.manifest
-E:\marius\c#\button tester\button tester\bin\Release\Button Tester.application
 E:\marius\c#\button tester\button tester\obj\Release\Button Tester.exe.manifest
 E:\marius\c#\button tester\button tester\obj\Release\Button Tester.application
+E:\marius\c#\button tester\button tester\obj\Release\Button Tester.exe
+E:\marius\c#\button tester\button tester\obj\Release\Button Tester.pdb

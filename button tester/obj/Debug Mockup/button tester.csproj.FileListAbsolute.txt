@@ -21,8 +21,8 @@ D:\marius\c#\button tester\button tester\obj\Debug Mockup\GenerateResource-ResGe
 D:\marius\c#\button tester\button tester\bin\Debug Mockup\Button Tester.exe.config
 D:\marius\c#\button tester\button tester\obj\Debug Mockup\button_tester.frmEditLink.resources
 E:\marius\c#\button tester\button tester\bin\Debug Mockup\Button Tester.exe.config
-E:\marius\c#\button tester\button tester\obj\Debug Mockup\Button Tester.exe
-E:\marius\c#\button tester\button tester\obj\Debug Mockup\Button Tester.pdb
+E:\marius\c#\button tester\button tester\bin\Debug Mockup\Button Tester.exe.manifest
+E:\marius\c#\button tester\button tester\bin\Debug Mockup\Button Tester.application
 E:\marius\c#\button tester\button tester\bin\Debug Mockup\Button Tester.exe
 E:\marius\c#\button tester\button tester\bin\Debug Mockup\Button Tester.pdb
 E:\marius\c#\button tester\button tester\bin\Debug Mockup\LJDotNet.dll
@@ -40,7 +40,9 @@ E:\marius\c#\button tester\button tester\obj\Debug Mockup\button_tester.frmMain.
 E:\marius\c#\button tester\button tester\obj\Debug Mockup\button_tester.frmMockUp.resources
 E:\marius\c#\button tester\button tester\obj\Debug Mockup\button_tester.frmOptions.resources
 E:\marius\c#\button tester\button tester\obj\Debug Mockup\button_tester.Properties.Resources.resources
-E:\marius\c#\button tester\button tester\obj\Debug Mockup\GenerateResource-ResGen.read.1.tlog
 E:\marius\c#\button tester\button tester\obj\Debug Mockup\GenerateResource.read.1.tlog
-E:\marius\c#\button tester\button tester\obj\Debug Mockup\GenerateResource-ResGen.write.1.tlog
 E:\marius\c#\button tester\button tester\obj\Debug Mockup\GenerateResource.write.1.tlog
+E:\marius\c#\button tester\button tester\obj\Debug Mockup\Button Tester.exe.manifest
+E:\marius\c#\button tester\button tester\obj\Debug Mockup\Button Tester.application
+E:\marius\c#\button tester\button tester\obj\Debug Mockup\Button Tester.exe
+E:\marius\c#\button tester\button tester\obj\Debug Mockup\Button Tester.pdb

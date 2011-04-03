@@ -1,0 +1,25 @@
+E:\marius\c#\button tester\button tester\bin\x86\Debug\Button Tester.exe.config
+E:\marius\c#\button tester\button tester\bin\x86\Debug\Button Tester.exe.manifest
+E:\marius\c#\button tester\button tester\bin\x86\Debug\Button Tester.application
+E:\marius\c#\button tester\button tester\bin\x86\Debug\Button Tester.exe
+E:\marius\c#\button tester\button tester\bin\x86\Debug\Button Tester.pdb
+E:\marius\c#\button tester\button tester\obj\x86\Debug\ResolveAssemblyReference.cache
+E:\marius\c#\button tester\button tester\obj\x86\Debug\button_tester.AboutBox.resources
+E:\marius\c#\button tester\button tester\obj\x86\Debug\button_tester.AutoCompleteExpressionBox.resources
+E:\marius\c#\button tester\button tester\obj\x86\Debug\button_tester.AutoCompleteExpressionBoxCustomization.resources
+E:\marius\c#\button tester\button tester\obj\x86\Debug\button_tester.AutoCompleteExpressionBoxCustomizationEdit.resources
+E:\marius\c#\button tester\button tester\obj\x86\Debug\button_tester.frmEdit.resources
+E:\marius\c#\button tester\button tester\obj\x86\Debug\button_tester.frmEditButton.resources
+E:\marius\c#\button tester\button tester\obj\x86\Debug\button_tester.frmEditLink.resources
+E:\marius\c#\button tester\button tester\obj\x86\Debug\button_tester.frmEditPriority.resources
+E:\marius\c#\button tester\button tester\obj\x86\Debug\button_tester.frmEditTestSet.resources
+E:\marius\c#\button tester\button tester\obj\x86\Debug\button_tester.frmMain.resources
+E:\marius\c#\button tester\button tester\obj\x86\Debug\button_tester.frmMockUp.resources
+E:\marius\c#\button tester\button tester\obj\x86\Debug\button_tester.frmOptions.resources
+E:\marius\c#\button tester\button tester\obj\x86\Debug\button_tester.Properties.Resources.resources
+E:\marius\c#\button tester\button tester\obj\x86\Debug\GenerateResource.read.1.tlog
+E:\marius\c#\button tester\button tester\obj\x86\Debug\GenerateResource.write.1.tlog
+E:\marius\c#\button tester\button tester\obj\x86\Debug\Button Tester.exe.manifest
+E:\marius\c#\button tester\button tester\obj\x86\Debug\Button Tester.application
+E:\marius\c#\button tester\button tester\obj\x86\Debug\Button Tester.exe
+E:\marius\c#\button tester\button tester\obj\x86\Debug\Button Tester.pdb
