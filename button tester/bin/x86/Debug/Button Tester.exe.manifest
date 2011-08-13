@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Button Tester.exe" size="202752">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Button Tester.exe" size="203776">
       <assemblyIdentity name="Button Tester" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>hMgrTSnCe2D5TgrivNMKNJ7gYI8=</dsig:DigestValue>
+        <dsig:DigestValue>Hm3f1Wxhrpw87TYGPtObuF7iNjQ=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

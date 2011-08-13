@@ -143,6 +143,8 @@ namespace button_tester
             public double ZeroToleranceHigh { get; set; }
             public double ZeroToleranceLow { get; set; }
 
+            public int? TestPilotLightPin { get; set; }
+
             public double LastCounterChangeMovementCap
             {
                 get;

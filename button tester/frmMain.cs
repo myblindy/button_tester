@@ -517,6 +517,13 @@ namespace button_tester
                     // fill in the priority list box
                     DisplayPriority(priority);
 
+                    // test pilot light on
+                    if (settings.Payload.TestPilotLightPin.HasValue)
+                        LJ.SetDigitalOutput(
+                            settings.Payload.TestPilotLightPin.Value+1,
+                            true,
+                            1);
+
                     while (!StopLoggingThread)
                     {
                         // TODO: AI0
@@ -984,6 +991,13 @@ namespace button_tester
                         stream.WriteLine("END,Thread terminated," +
                             DateTime.Now.ToString() + "," + cyclecounter + " cycles," +
                             errorcounter + " errors");
+
+                    // test pilot light off
+                    if (settings.Payload.TestPilotLightPin.HasValue)
+                        LJ.SetDigitalOutput(
+                            settings.Payload.TestPilotLightPin.Value + 1,
+                            true,
+                            0);
                 });
 
             thread.Name = "Background worker thread";

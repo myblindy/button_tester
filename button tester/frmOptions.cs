@@ -50,8 +50,12 @@ namespace button_tester
             txtCycleCondition.Text = settings.Payload.CycleCondition.Expression;
             chkStopAtCycles.Checked = settings.Payload.StopAtCycles.HasValue;
             txtStopAtCycles.Text = (settings.Payload.StopAtCycles ?? 100).ToString();
+
             chkOutputTick.Checked = settings.Payload.ClockOutputChannel.HasValue;
             cmbOutputTickChannel.SelectedIndex = settings.Payload.ClockOutputChannel ?? 0;
+
+            chkTestPilotPin.Checked = settings.Payload.TestPilotLightPin.HasValue;
+            cmbTestPilotPin.SelectedIndex = settings.Payload.TestPilotLightPin??0;
 
             chkWaitBetweenAnalogChanges.Checked = settings.Payload.WaitBeforeAnalogChanges.HasValue;
             txtWaitBetweenAnalogChanges.Text = ((settings.Payload.WaitBeforeAnalogChanges ?? 0) / 1000.0f).ToString();
@@ -169,6 +173,8 @@ namespace button_tester
                     (int?)int.Parse(txtStopAtCycles.Text) : null;
                 settings.Payload.ClockOutputChannel = chkOutputTick.Checked ?
                     (int?)int.Parse((cmbOutputTickChannel.SelectedItem as string).Substring(1)) - 1 : null;
+                settings.Payload.TestPilotLightPin = chkTestPilotPin.Checked ?
+                    (int?)int.Parse((cmbTestPilotPin.SelectedItem as string).Substring(1)) - 1 : null;
                 settings.Payload.WaitBeforeAnalogChanges = chkWaitBetweenAnalogChanges.Checked ?
                     (int?)((int)(double.Parse(txtWaitBetweenAnalogChanges.Text) * 1000.0f)) : null;
 
@@ -409,6 +415,11 @@ namespace button_tester
         private void chkAI4_CheckedChanged(object sender, EventArgs e)
         {
             txtAI4From.Enabled = txtAI4Pin.Enabled = txtAI4To.Enabled = chkAI4.Checked;
+        }
+
+        private void chkTestPilotPin_CheckedChanged(object sender, EventArgs e)
+        {
+            cmbTestPilotPin.Enabled = chkTestPilotPin.Checked;
         }
     }
 }

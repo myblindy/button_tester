@@ -50,6 +50,7 @@
             this.btnOK = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.chkReverseDirection = new System.Windows.Forms.CheckBox();
             this.txtWaitBetweenAnalogChanges = new System.Windows.Forms.TextBox();
             this.txtCounterChangeCap = new System.Windows.Forms.TextBox();
             this.chkWaitBetweenAnalogChanges = new System.Windows.Forms.CheckBox();
@@ -60,7 +61,6 @@
             this.txtStopAtCycles = new System.Windows.Forms.TextBox();
             this.chkOutputTick = new System.Windows.Forms.CheckBox();
             this.chkStopAtCycles = new System.Windows.Forms.CheckBox();
-            this.txtCycleCondition = new button_tester.AutoCompleteExpressionBox();
             this.lblCondition = new System.Windows.Forms.Label();
             this.chkUseCycles = new System.Windows.Forms.CheckBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -110,7 +110,9 @@
             this.btnRemoveLink = new System.Windows.Forms.Button();
             this.btnAddLink = new System.Windows.Forms.Button();
             this.lstLinks = new System.Windows.Forms.ListBox();
-            this.chkReverseDirection = new System.Windows.Forms.CheckBox();
+            this.chkTestPilotPin = new System.Windows.Forms.CheckBox();
+            this.cmbTestPilotPin = new System.Windows.Forms.ComboBox();
+            this.txtCycleCondition = new button_tester.AutoCompleteExpressionBox();
             this.groupBox2.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -305,7 +307,8 @@
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(221, 400);
+            this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnOK.Location = new System.Drawing.Point(221, 432);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 23);
             this.btnOK.TabIndex = 1;
@@ -315,8 +318,9 @@
             // 
             // btnCancel
             // 
+            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(302, 400);
+            this.btnCancel.Location = new System.Drawing.Point(302, 432);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 2;
@@ -326,18 +330,29 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.cmbTestPilotPin);
             this.groupBox4.Controls.Add(this.chkReverseDirection);
             this.groupBox4.Controls.Add(this.txtWaitBetweenAnalogChanges);
             this.groupBox4.Controls.Add(this.txtCounterChangeCap);
+            this.groupBox4.Controls.Add(this.chkTestPilotPin);
             this.groupBox4.Controls.Add(this.chkWaitBetweenAnalogChanges);
             this.groupBox4.Controls.Add(this.chkStopOnErrors);
             this.groupBox4.Controls.Add(this.label10);
             this.groupBox4.Location = new System.Drawing.Point(8, 278);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(343, 73);
+            this.groupBox4.Size = new System.Drawing.Size(343, 104);
             this.groupBox4.TabIndex = 4;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Misc settings";
+            // 
+            // chkReverseDirection
+            // 
+            this.chkReverseDirection.Location = new System.Drawing.Point(273, 43);
+            this.chkReverseDirection.Name = "chkReverseDirection";
+            this.chkReverseDirection.Size = new System.Drawing.Size(70, 30);
+            this.chkReverseDirection.TabIndex = 5;
+            this.chkReverseDirection.Text = "Reverse Direction";
+            this.chkReverseDirection.UseVisualStyleBackColor = true;
             // 
             // txtWaitBetweenAnalogChanges
             // 
@@ -361,7 +376,7 @@
             this.chkWaitBetweenAnalogChanges.Name = "chkWaitBetweenAnalogChanges";
             this.chkWaitBetweenAnalogChanges.Size = new System.Drawing.Size(263, 25);
             this.chkWaitBetweenAnalogChanges.TabIndex = 1;
-            this.chkWaitBetweenAnalogChanges.Text = "Wait                   sec between analog changes.";
+            this.chkWaitBetweenAnalogChanges.Text = "Wait                    sec between analog changes.";
             this.chkWaitBetweenAnalogChanges.UseVisualStyleBackColor = true;
             this.chkWaitBetweenAnalogChanges.CheckedChanged += new System.EventHandler(this.chkWaitBetweenAnalogChanges_CheckedChanged);
             // 
@@ -458,14 +473,6 @@
             this.chkStopAtCycles.UseVisualStyleBackColor = true;
             this.chkStopAtCycles.CheckedChanged += new System.EventHandler(this.chkStopAtCycles_CheckedChanged);
             // 
-            // txtCycleCondition
-            // 
-            this.txtCycleCondition.Enabled = false;
-            this.txtCycleCondition.Location = new System.Drawing.Point(70, 19);
-            this.txtCycleCondition.Name = "txtCycleCondition";
-            this.txtCycleCondition.Size = new System.Drawing.Size(263, 31);
-            this.txtCycleCondition.TabIndex = 2;
-            // 
             // lblCondition
             // 
             this.lblCondition.Enabled = false;
@@ -489,6 +496,9 @@
             // 
             // tabControl1
             // 
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Controls.Add(this.tabPage2);
@@ -496,7 +506,7 @@
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(365, 382);
+            this.tabControl1.Size = new System.Drawing.Size(365, 414);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -507,7 +517,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(357, 356);
+            this.tabPage1.Size = new System.Drawing.Size(357, 388);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "General";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -519,7 +529,7 @@
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(357, 356);
+            this.tabPage4.Size = new System.Drawing.Size(357, 388);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Test sets";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -699,7 +709,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(357, 356);
+            this.tabPage2.Size = new System.Drawing.Size(357, 388);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Hysteresis";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -923,7 +933,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(357, 356);
+            this.tabPage3.Size = new System.Drawing.Size(357, 388);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Button linking";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -966,14 +976,50 @@
             this.lstLinks.Size = new System.Drawing.Size(158, 147);
             this.lstLinks.TabIndex = 0;
             // 
-            // chkReverseDirection
+            // chkTestPilotPin
             // 
-            this.chkReverseDirection.Location = new System.Drawing.Point(273, 43);
-            this.chkReverseDirection.Name = "chkReverseDirection";
-            this.chkReverseDirection.Size = new System.Drawing.Size(70, 30);
-            this.chkReverseDirection.TabIndex = 5;
-            this.chkReverseDirection.Text = "Reverse Direction";
-            this.chkReverseDirection.UseVisualStyleBackColor = true;
+            this.chkTestPilotPin.Location = new System.Drawing.Point(9, 69);
+            this.chkTestPilotPin.Name = "chkTestPilotPin";
+            this.chkTestPilotPin.Size = new System.Drawing.Size(263, 25);
+            this.chkTestPilotPin.TabIndex = 1;
+            this.chkTestPilotPin.Text = "Turn pin                      on while running";
+            this.chkTestPilotPin.UseVisualStyleBackColor = true;
+            this.chkTestPilotPin.CheckedChanged += new System.EventHandler(this.chkTestPilotPin_CheckedChanged);
+            // 
+            // cmbTestPilotPin
+            // 
+            this.cmbTestPilotPin.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbTestPilotPin.Enabled = false;
+            this.cmbTestPilotPin.FormattingEnabled = true;
+            this.cmbTestPilotPin.Items.AddRange(new object[] {
+            "D1",
+            "D2",
+            "D3",
+            "D4",
+            "D5",
+            "D6",
+            "D7",
+            "D8",
+            "D9",
+            "D10",
+            "D11",
+            "D12",
+            "D13",
+            "D14",
+            "D15",
+            "D16"});
+            this.cmbTestPilotPin.Location = new System.Drawing.Point(70, 71);
+            this.cmbTestPilotPin.Name = "cmbTestPilotPin";
+            this.cmbTestPilotPin.Size = new System.Drawing.Size(58, 21);
+            this.cmbTestPilotPin.TabIndex = 5;
+            // 
+            // txtCycleCondition
+            // 
+            this.txtCycleCondition.Enabled = false;
+            this.txtCycleCondition.Location = new System.Drawing.Point(70, 19);
+            this.txtCycleCondition.Name = "txtCycleCondition";
+            this.txtCycleCondition.Size = new System.Drawing.Size(263, 31);
+            this.txtCycleCondition.TabIndex = 2;
             // 
             // frmOptions
             // 
@@ -981,7 +1027,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(388, 432);
+            this.ClientSize = new System.Drawing.Size(388, 464);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOK);
@@ -1095,5 +1141,7 @@
         private System.Windows.Forms.TextBox txtCounterChangeCap;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.CheckBox chkReverseDirection;
+        private System.Windows.Forms.ComboBox cmbTestPilotPin;
+        private System.Windows.Forms.CheckBox chkTestPilotPin;
     }
 }
