@@ -130,7 +130,7 @@
             this.toolStripMenuItem2,
             this.mnuExit});
             this.mnuFile.Name = "mnuFile";
-            this.mnuFile.Size = new System.Drawing.Size(35, 20);
+            this.mnuFile.Size = new System.Drawing.Size(37, 20);
             this.mnuFile.Text = "&File";
             // 
             // mnuNewProject
@@ -138,9 +138,9 @@
             this.mnuNewProject.Image = global::button_tester.Properties.Resources.NewDocument;
             this.mnuNewProject.ImageTransparentColor = System.Drawing.Color.Fuchsia;
             this.mnuNewProject.Name = "mnuNewProject";
-            this.mnuNewProject.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift)
-                        | System.Windows.Forms.Keys.N)));
-            this.mnuNewProject.Size = new System.Drawing.Size(240, 22);
+            this.mnuNewProject.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.N)));
+            this.mnuNewProject.Size = new System.Drawing.Size(233, 22);
             this.mnuNewProject.Text = "&New project";
             this.mnuNewProject.Click += new System.EventHandler(this.mnuNewProject_Click);
             // 
@@ -150,14 +150,14 @@
             this.mnuOpenProject.ImageTransparentColor = System.Drawing.Color.Fuchsia;
             this.mnuOpenProject.Name = "mnuOpenProject";
             this.mnuOpenProject.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.mnuOpenProject.Size = new System.Drawing.Size(240, 22);
+            this.mnuOpenProject.Size = new System.Drawing.Size(233, 22);
             this.mnuOpenProject.Text = "&Open project...";
             this.mnuOpenProject.Click += new System.EventHandler(this.mnuOpenProject_Click);
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(237, 6);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(230, 6);
             // 
             // mnuSaveProject
             // 
@@ -165,7 +165,7 @@
             this.mnuSaveProject.ImageTransparentColor = System.Drawing.Color.Fuchsia;
             this.mnuSaveProject.Name = "mnuSaveProject";
             this.mnuSaveProject.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.mnuSaveProject.Size = new System.Drawing.Size(240, 22);
+            this.mnuSaveProject.Size = new System.Drawing.Size(233, 22);
             this.mnuSaveProject.Text = "&Save project";
             this.mnuSaveProject.Click += new System.EventHandler(this.mnuSave_Click);
             // 
@@ -173,21 +173,21 @@
             // 
             this.mnuSaveProjectAs.ImageTransparentColor = System.Drawing.Color.Fuchsia;
             this.mnuSaveProjectAs.Name = "mnuSaveProjectAs";
-            this.mnuSaveProjectAs.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift)
-                        | System.Windows.Forms.Keys.S)));
-            this.mnuSaveProjectAs.Size = new System.Drawing.Size(240, 22);
+            this.mnuSaveProjectAs.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.S)));
+            this.mnuSaveProjectAs.Size = new System.Drawing.Size(233, 22);
             this.mnuSaveProjectAs.Text = "Save project &as...";
             this.mnuSaveProjectAs.Click += new System.EventHandler(this.mnuSaveProjectAs_Click);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(237, 6);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(230, 6);
             // 
             // mnuExit
             // 
             this.mnuExit.Name = "mnuExit";
-            this.mnuExit.Size = new System.Drawing.Size(240, 22);
+            this.mnuExit.Size = new System.Drawing.Size(233, 22);
             this.mnuExit.Text = "&Exit";
             this.mnuExit.Click += new System.EventHandler(this.mnuExit_Click);
             // 
@@ -207,7 +207,7 @@
             this.toolStripSeparator6,
             this.mnuOptions});
             this.mnuEdit.Name = "mnuEdit";
-            this.mnuEdit.Size = new System.Drawing.Size(37, 20);
+            this.mnuEdit.Size = new System.Drawing.Size(39, 20);
             this.mnuEdit.Text = "&Edit";
             // 
             // mnuAddNewItem
@@ -215,7 +215,7 @@
             this.mnuAddNewItem.Image = global::button_tester.Properties.Resources.InsertPage;
             this.mnuAddNewItem.ImageTransparentColor = System.Drawing.Color.Fuchsia;
             this.mnuAddNewItem.Name = "mnuAddNewItem";
-            this.mnuAddNewItem.Size = new System.Drawing.Size(181, 22);
+            this.mnuAddNewItem.Size = new System.Drawing.Size(176, 22);
             this.mnuAddNewItem.Text = "&Add new item...";
             this.mnuAddNewItem.Click += new System.EventHandler(this.mnuAddNew_Click);
             // 
@@ -224,14 +224,14 @@
             this.mnuEditItem.Image = global::button_tester.Properties.Resources.EditInformation;
             this.mnuEditItem.ImageTransparentColor = System.Drawing.Color.Fuchsia;
             this.mnuEditItem.Name = "mnuEditItem";
-            this.mnuEditItem.Size = new System.Drawing.Size(181, 22);
+            this.mnuEditItem.Size = new System.Drawing.Size(176, 22);
             this.mnuEditItem.Text = "&Edit selected item...";
             this.mnuEditItem.Click += new System.EventHandler(this.mnuEditItem_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(178, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(173, 6);
             // 
             // mnuCut
             // 
@@ -239,7 +239,7 @@
             this.mnuCut.ImageTransparentColor = System.Drawing.Color.Fuchsia;
             this.mnuCut.Name = "mnuCut";
             this.mnuCut.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
-            this.mnuCut.Size = new System.Drawing.Size(181, 22);
+            this.mnuCut.Size = new System.Drawing.Size(176, 22);
             this.mnuCut.Text = "Cu&t";
             this.mnuCut.Click += new System.EventHandler(this.mnuCut_Click);
             // 
@@ -249,7 +249,7 @@
             this.mnuCopy.ImageTransparentColor = System.Drawing.Color.Fuchsia;
             this.mnuCopy.Name = "mnuCopy";
             this.mnuCopy.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
-            this.mnuCopy.Size = new System.Drawing.Size(181, 22);
+            this.mnuCopy.Size = new System.Drawing.Size(176, 22);
             this.mnuCopy.Text = "&Copy";
             this.mnuCopy.Click += new System.EventHandler(this.mnuCopy_Click);
             // 
@@ -259,7 +259,7 @@
             this.mnuPaste.ImageTransparentColor = System.Drawing.Color.Fuchsia;
             this.mnuPaste.Name = "mnuPaste";
             this.mnuPaste.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
-            this.mnuPaste.Size = new System.Drawing.Size(181, 22);
+            this.mnuPaste.Size = new System.Drawing.Size(176, 22);
             this.mnuPaste.Text = "&Paste";
             this.mnuPaste.Click += new System.EventHandler(this.mnuPaste_Click);
             // 
@@ -268,21 +268,21 @@
             this.mnuDelete.Image = global::button_tester.Properties.Resources.DeleteHS;
             this.mnuDelete.ImageTransparentColor = System.Drawing.Color.Fuchsia;
             this.mnuDelete.Name = "mnuDelete";
-            this.mnuDelete.Size = new System.Drawing.Size(181, 22);
+            this.mnuDelete.Size = new System.Drawing.Size(176, 22);
             this.mnuDelete.Text = "&Delete";
             this.mnuDelete.Click += new System.EventHandler(this.mnuDelete_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(178, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(173, 6);
             // 
             // mnuMoveUp
             // 
             this.mnuMoveUp.Image = global::button_tester.Properties.Resources.FillUpHS;
             this.mnuMoveUp.ImageTransparentColor = System.Drawing.Color.Fuchsia;
             this.mnuMoveUp.Name = "mnuMoveUp";
-            this.mnuMoveUp.Size = new System.Drawing.Size(181, 22);
+            this.mnuMoveUp.Size = new System.Drawing.Size(176, 22);
             this.mnuMoveUp.Text = "Move &up";
             this.mnuMoveUp.Click += new System.EventHandler(this.mnuMoveUp_Click);
             // 
@@ -291,20 +291,20 @@
             this.mnuMoveDown.Image = global::button_tester.Properties.Resources.FillDownHS;
             this.mnuMoveDown.ImageTransparentColor = System.Drawing.Color.Fuchsia;
             this.mnuMoveDown.Name = "mnuMoveDown";
-            this.mnuMoveDown.Size = new System.Drawing.Size(181, 22);
+            this.mnuMoveDown.Size = new System.Drawing.Size(176, 22);
             this.mnuMoveDown.Text = "Move &down";
             this.mnuMoveDown.Click += new System.EventHandler(this.mnuMoveDown_Click);
             // 
             // toolStripSeparator6
             // 
             this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(178, 6);
+            this.toolStripSeparator6.Size = new System.Drawing.Size(173, 6);
             // 
             // mnuOptions
             // 
             this.mnuOptions.Image = global::button_tester.Properties.Resources.OptionsHS;
             this.mnuOptions.Name = "mnuOptions";
-            this.mnuOptions.Size = new System.Drawing.Size(181, 22);
+            this.mnuOptions.Size = new System.Drawing.Size(176, 22);
             this.mnuOptions.Text = "&Options";
             this.mnuOptions.Click += new System.EventHandler(this.mnuOptions_Click);
             // 
@@ -315,7 +315,7 @@
             this.mnuRunRandom,
             this.mnuStop});
             this.mnuSimulation.Name = "mnuSimulation";
-            this.mnuSimulation.Size = new System.Drawing.Size(67, 20);
+            this.mnuSimulation.Size = new System.Drawing.Size(76, 20);
             this.mnuSimulation.Text = "&Simulation";
             // 
             // mnuRun
@@ -323,7 +323,7 @@
             this.mnuRun.Image = global::button_tester.Properties.Resources.FormRunHS;
             this.mnuRun.Name = "mnuRun";
             this.mnuRun.ShortcutKeys = System.Windows.Forms.Keys.F5;
-            this.mnuRun.Size = new System.Drawing.Size(170, 22);
+            this.mnuRun.Size = new System.Drawing.Size(165, 22);
             this.mnuRun.Text = "&Start";
             this.mnuRun.Click += new System.EventHandler(this.mnuRun_Click);
             // 
@@ -332,7 +332,7 @@
             this.mnuRunRandom.Image = global::button_tester.Properties.Resources.FormRunHS_red;
             this.mnuRunRandom.Name = "mnuRunRandom";
             this.mnuRunRandom.ShortcutKeys = System.Windows.Forms.Keys.F5;
-            this.mnuRunRandom.Size = new System.Drawing.Size(170, 22);
+            this.mnuRunRandom.Size = new System.Drawing.Size(165, 22);
             this.mnuRunRandom.Text = "&Start Random";
             this.mnuRunRandom.Click += new System.EventHandler(this.mnuRunRandom_Click);
             // 
@@ -341,7 +341,7 @@
             this.mnuStop.Enabled = false;
             this.mnuStop.Image = global::button_tester.Properties.Resources.StopHS;
             this.mnuStop.Name = "mnuStop";
-            this.mnuStop.Size = new System.Drawing.Size(170, 22);
+            this.mnuStop.Size = new System.Drawing.Size(165, 22);
             this.mnuStop.Text = "S&top";
             this.mnuStop.Click += new System.EventHandler(this.mnuStop_Click);
             // 
@@ -350,14 +350,14 @@
             this.mnuHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuAbout});
             this.mnuHelp.Name = "mnuHelp";
-            this.mnuHelp.Size = new System.Drawing.Size(40, 20);
+            this.mnuHelp.Size = new System.Drawing.Size(44, 20);
             this.mnuHelp.Text = "&Help";
             // 
             // mnuAbout
             // 
             this.mnuAbout.Image = global::button_tester.Properties.Resources.Help;
             this.mnuAbout.Name = "mnuAbout";
-            this.mnuAbout.Size = new System.Drawing.Size(114, 22);
+            this.mnuAbout.Size = new System.Drawing.Size(107, 22);
             this.mnuAbout.Text = "About";
             this.mnuAbout.Click += new System.EventHandler(this.mnuAbout_Click);
             // 
@@ -605,7 +605,7 @@
             // lblCurrentValues
             // 
             this.lblCurrentValues.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblCurrentValues.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCurrentValues.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCurrentValues.Location = new System.Drawing.Point(117, 308);
             this.lblCurrentValues.Name = "lblCurrentValues";
             this.lblCurrentValues.Size = new System.Drawing.Size(103, 149);
@@ -761,6 +761,7 @@
             this.MainMenuStrip = this.menustripMain;
             this.MaximizeBox = false;
             this.Name = "frmMain";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Button tester";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMain_FormClosing);
             this.Load += new System.EventHandler(this.frmMain_Load);

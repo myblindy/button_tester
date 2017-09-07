@@ -1,0 +1,9 @@
+F:\marius\c#\button tester\EnsureAlwaysOn\bin\Debug\EnsureAlwaysOn.exe.config
+F:\marius\c#\button tester\EnsureAlwaysOn\bin\Debug\EnsureAlwaysOn.exe
+F:\marius\c#\button tester\EnsureAlwaysOn\bin\Debug\EnsureAlwaysOn.pdb
+F:\marius\c#\button tester\EnsureAlwaysOn\obj\Debug\EnsureAlwaysOn.Form1.resources
+F:\marius\c#\button tester\EnsureAlwaysOn\obj\Debug\EnsureAlwaysOn.Properties.Resources.resources
+F:\marius\c#\button tester\EnsureAlwaysOn\obj\Debug\EnsureAlwaysOn.csproj.GenerateResource.Cache
+F:\marius\c#\button tester\EnsureAlwaysOn\obj\Debug\EnsureAlwaysOn.exe
+F:\marius\c#\button tester\EnsureAlwaysOn\obj\Debug\EnsureAlwaysOn.pdb
+F:\marius\c#\button tester\EnsureAlwaysOn\obj\Debug\EnsureAlwaysOn.csprojResolveAssemblyReference.cache

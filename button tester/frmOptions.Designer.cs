@@ -50,9 +50,11 @@
             this.btnOK = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.cmbTestPilotPin = new System.Windows.Forms.ComboBox();
             this.chkReverseDirection = new System.Windows.Forms.CheckBox();
             this.txtWaitBetweenAnalogChanges = new System.Windows.Forms.TextBox();
             this.txtCounterChangeCap = new System.Windows.Forms.TextBox();
+            this.chkTestPilotPin = new System.Windows.Forms.CheckBox();
             this.chkWaitBetweenAnalogChanges = new System.Windows.Forms.CheckBox();
             this.chkStopOnErrors = new System.Windows.Forms.CheckBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -61,10 +63,13 @@
             this.txtStopAtCycles = new System.Windows.Forms.TextBox();
             this.chkOutputTick = new System.Windows.Forms.CheckBox();
             this.chkStopAtCycles = new System.Windows.Forms.CheckBox();
+            this.txtCycleCondition = new button_tester.AutoCompleteExpressionBox();
             this.lblCondition = new System.Windows.Forms.Label();
             this.chkUseCycles = new System.Windows.Forms.CheckBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.chkDriveMotor = new System.Windows.Forms.CheckBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnMoveDownPriority = new System.Windows.Forms.Button();
@@ -110,14 +115,12 @@
             this.btnRemoveLink = new System.Windows.Forms.Button();
             this.btnAddLink = new System.Windows.Forms.Button();
             this.lstLinks = new System.Windows.Forms.ListBox();
-            this.chkTestPilotPin = new System.Windows.Forms.CheckBox();
-            this.cmbTestPilotPin = new System.Windows.Forms.ComboBox();
-            this.txtCycleCondition = new button_tester.AutoCompleteExpressionBox();
             this.groupBox2.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.tabPage5.SuspendLayout();
             this.tabPage4.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -345,6 +348,33 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Misc settings";
             // 
+            // cmbTestPilotPin
+            // 
+            this.cmbTestPilotPin.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbTestPilotPin.Enabled = false;
+            this.cmbTestPilotPin.FormattingEnabled = true;
+            this.cmbTestPilotPin.Items.AddRange(new object[] {
+            "D1",
+            "D2",
+            "D3",
+            "D4",
+            "D5",
+            "D6",
+            "D7",
+            "D8",
+            "D9",
+            "D10",
+            "D11",
+            "D12",
+            "D13",
+            "D14",
+            "D15",
+            "D16"});
+            this.cmbTestPilotPin.Location = new System.Drawing.Point(70, 71);
+            this.cmbTestPilotPin.Name = "cmbTestPilotPin";
+            this.cmbTestPilotPin.Size = new System.Drawing.Size(58, 21);
+            this.cmbTestPilotPin.TabIndex = 5;
+            // 
             // chkReverseDirection
             // 
             this.chkReverseDirection.Location = new System.Drawing.Point(273, 43);
@@ -369,6 +399,16 @@
             this.txtCounterChangeCap.Size = new System.Drawing.Size(47, 20);
             this.txtCounterChangeCap.TabIndex = 4;
             this.txtCounterChangeCap.Text = "100";
+            // 
+            // chkTestPilotPin
+            // 
+            this.chkTestPilotPin.Location = new System.Drawing.Point(9, 69);
+            this.chkTestPilotPin.Name = "chkTestPilotPin";
+            this.chkTestPilotPin.Size = new System.Drawing.Size(263, 25);
+            this.chkTestPilotPin.TabIndex = 1;
+            this.chkTestPilotPin.Text = "Turn pin                      on while running";
+            this.chkTestPilotPin.UseVisualStyleBackColor = true;
+            this.chkTestPilotPin.CheckedChanged += new System.EventHandler(this.chkTestPilotPin_CheckedChanged);
             // 
             // chkWaitBetweenAnalogChanges
             // 
@@ -473,6 +513,14 @@
             this.chkStopAtCycles.UseVisualStyleBackColor = true;
             this.chkStopAtCycles.CheckedChanged += new System.EventHandler(this.chkStopAtCycles_CheckedChanged);
             // 
+            // txtCycleCondition
+            // 
+            this.txtCycleCondition.Enabled = false;
+            this.txtCycleCondition.Location = new System.Drawing.Point(70, 19);
+            this.txtCycleCondition.Name = "txtCycleCondition";
+            this.txtCycleCondition.Size = new System.Drawing.Size(263, 31);
+            this.txtCycleCondition.TabIndex = 2;
+            // 
             // lblCondition
             // 
             this.lblCondition.Enabled = false;
@@ -500,6 +548,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
@@ -521,6 +570,26 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "General";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage5
+            // 
+            this.tabPage5.Controls.Add(this.chkDriveMotor);
+            this.tabPage5.Location = new System.Drawing.Point(4, 22);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage5.Size = new System.Drawing.Size(357, 388);
+            this.tabPage5.TabIndex = 4;
+            this.tabPage5.Text = "Drive Motor";
+            this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // chkDriveMotor
+            // 
+            this.chkDriveMotor.Location = new System.Drawing.Point(6, 6);
+            this.chkDriveMotor.Name = "chkDriveMotor";
+            this.chkDriveMotor.Size = new System.Drawing.Size(345, 35);
+            this.chkDriveMotor.TabIndex = 0;
+            this.chkDriveMotor.Text = "Use magnets on D15 and D16 (input) to drive motors on D7 and D8 (output).";
+            this.chkDriveMotor.UseVisualStyleBackColor = true;
             // 
             // tabPage4
             // 
@@ -976,51 +1045,6 @@
             this.lstLinks.Size = new System.Drawing.Size(158, 147);
             this.lstLinks.TabIndex = 0;
             // 
-            // chkTestPilotPin
-            // 
-            this.chkTestPilotPin.Location = new System.Drawing.Point(9, 69);
-            this.chkTestPilotPin.Name = "chkTestPilotPin";
-            this.chkTestPilotPin.Size = new System.Drawing.Size(263, 25);
-            this.chkTestPilotPin.TabIndex = 1;
-            this.chkTestPilotPin.Text = "Turn pin                      on while running";
-            this.chkTestPilotPin.UseVisualStyleBackColor = true;
-            this.chkTestPilotPin.CheckedChanged += new System.EventHandler(this.chkTestPilotPin_CheckedChanged);
-            // 
-            // cmbTestPilotPin
-            // 
-            this.cmbTestPilotPin.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbTestPilotPin.Enabled = false;
-            this.cmbTestPilotPin.FormattingEnabled = true;
-            this.cmbTestPilotPin.Items.AddRange(new object[] {
-            "D1",
-            "D2",
-            "D3",
-            "D4",
-            "D5",
-            "D6",
-            "D7",
-            "D8",
-            "D9",
-            "D10",
-            "D11",
-            "D12",
-            "D13",
-            "D14",
-            "D15",
-            "D16"});
-            this.cmbTestPilotPin.Location = new System.Drawing.Point(70, 71);
-            this.cmbTestPilotPin.Name = "cmbTestPilotPin";
-            this.cmbTestPilotPin.Size = new System.Drawing.Size(58, 21);
-            this.cmbTestPilotPin.TabIndex = 5;
-            // 
-            // txtCycleCondition
-            // 
-            this.txtCycleCondition.Enabled = false;
-            this.txtCycleCondition.Location = new System.Drawing.Point(70, 19);
-            this.txtCycleCondition.Name = "txtCycleCondition";
-            this.txtCycleCondition.Size = new System.Drawing.Size(263, 31);
-            this.txtCycleCondition.TabIndex = 2;
-            // 
             // frmOptions
             // 
             this.AcceptButton = this.btnOK;
@@ -1046,6 +1070,7 @@
             this.groupBox5.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            this.tabPage5.ResumeLayout(false);
             this.tabPage4.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
@@ -1143,5 +1168,7 @@
         private System.Windows.Forms.CheckBox chkReverseDirection;
         private System.Windows.Forms.ComboBox cmbTestPilotPin;
         private System.Windows.Forms.CheckBox chkTestPilotPin;
+        private System.Windows.Forms.TabPage tabPage5;
+        private System.Windows.Forms.CheckBox chkDriveMotor;
     }
 }

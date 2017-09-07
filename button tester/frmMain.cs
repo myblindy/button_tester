@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using System.IO;
 using System.Diagnostics;
 using System.Threading;
+using Microsoft.Win32;
 
 namespace button_tester
 {
@@ -16,9 +17,29 @@ namespace button_tester
     {
         Settings settings = new Settings();
 
-        public frmMain()
+        public frmMain(string file)
         {
             InitializeComponent();
+
+            LJ.Init();
+            LJ.ResetOutputs();
+            tmrUIUpdate_Tick(null, null);
+
+            lblCnt.Text = "Cnt:" + Environment.NewLine + "--";
+            lblErr.Text = "Err:" + Environment.NewLine + "0";
+
+            if (!string.IsNullOrWhiteSpace(file))
+            {
+                OpenFile(file);
+
+                var key = Registry.CurrentUser.CreateSubKey(@"Software\SS\Button Tester");
+                var lastlog = key.GetValue("Last Log") as string;
+
+                if (!string.IsNullOrWhiteSpace(lastlog))
+                    Run(Convert.ToBoolean(key.GetValue("Random Run") as string), lastlog);
+            }
+            else
+                mnuNewProject.PerformClick();
         }
 
         private void mnuExit_Click(object sender, EventArgs e)
@@ -46,6 +67,7 @@ namespace button_tester
                 }
 
             settings.New();
+            WriteLastOpenFile(null);
 
             lvMain.Items.Clear();
 
@@ -61,7 +83,10 @@ namespace button_tester
         {
             if (settings.FileName == null)
                 if (fdSave.ShowDialog() == DialogResult.OK)
+                {
                     settings.FileName = fdSave.FileName;
+                    WriteLastOpenFile(fdSave.FileName);
+                }
                 else
                     return;
 
@@ -73,6 +98,28 @@ namespace button_tester
         private void tsbOpen_Click(object sender, EventArgs e)
         {
             mnuOpenProject.PerformClick();
+        }
+
+        void OpenFile(string filename)
+        {
+            if (!settings.Load(filename))
+                return;
+
+            WriteLastOpenFile(filename);
+
+            // update the list view
+            lvMain.Items.Clear();
+            int i = 0;
+
+            foreach (var act in settings.Payload.Actions)
+                lvMain.Items.Add(new ListViewItem(new string[]{
+                        (++i).ToString(),
+                        act.GetTypeName(),
+                        act.GetDetails(),
+                        ""
+                    }));
+
+            UpdateTitle();
         }
 
         private void mnuOpenProject_Click(object sender, EventArgs e)
@@ -91,23 +138,14 @@ namespace button_tester
 
             if (fdOpen.ShowDialog() == DialogResult.OK)
             {
-                if (!settings.Load(fdOpen.FileName))
-                    return;
-
-                // update the list view
-                lvMain.Items.Clear();
-                int i = 0;
-
-                foreach (var act in settings.Payload.Actions)
-                    lvMain.Items.Add(new ListViewItem(new string[]{
-                        (++i).ToString(),
-                        act.GetTypeName(),
-                        act.GetDetails(),
-                        ""
-                    }));
+                OpenFile(fdOpen.FileName);
             }
+        }
 
-            UpdateTitle();
+        private void WriteLastOpenFile(string path)
+        {
+            var key = Registry.CurrentUser.CreateSubKey(@"Software\SS\Button Tester");
+            key.SetValue("Last Open", path ?? "");
         }
 
         private void mnuSaveProjectAs_Click(object sender, EventArgs e)
@@ -115,6 +153,7 @@ namespace button_tester
             if (fdSave.ShowDialog() == DialogResult.OK)
             {
                 settings.FileName = fdSave.FileName;
+                WriteLastOpenFile(fdSave.FileName);
                 settings.Save();
 
                 UpdateTitle();
@@ -191,17 +230,12 @@ namespace button_tester
                         return;
                 }
             }
+
+            WriteLastOpenFile(null);
         }
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            LJ.Init();
-            LJ.ResetOutputs();
-            tmrUIUpdate_Tick(null, null);
-            mnuNewProject.PerformClick();
-
-            lblCnt.Text = "Cnt:" + Environment.NewLine + "--";
-            lblErr.Text = "Err:" + Environment.NewLine + "0";
         }
 
         private void mnuEditItem_Click(object sender, EventArgs e)
@@ -435,14 +469,17 @@ namespace button_tester
             return o;
         }
 
-        private void Run(bool random)
+        int[] StateSnapshot = null;
+        double[] AStateSnapshot = null;
+
+        private void Run(bool random, string logfilename)
         {
             if (lvMain.Items.Count <= 0)
                 return;
 
-            // get the log file name
-            if (fdSaveLog.ShowDialog() != DialogResult.OK)
-                return;
+            var key = Registry.CurrentUser.CreateSubKey(@"Software\SS\Button Tester");
+            key.SetValue("Last Log", logfilename);
+            key.SetValue("Random Run", random.ToString());
 
             RunRandom = random;
 
@@ -466,6 +503,8 @@ namespace button_tester
                 settings.Payload.OfflineLineProcRange.Second) + 1;
             InBreak = false;
 
+            InWaitForCondition = false;
+
             CurrBTs = null;
 
             // enable only the required stuff
@@ -487,6 +526,8 @@ namespace button_tester
             lblErr.Text = "Err:" + Environment.NewLine + "0";
             Thread thread = new Thread(() =>
                 {
+                    Thread.Sleep(500);
+
                     Settings.PayloadClass.Priority priority =
                         settings.Payload.Priorities.Count > 0 ? settings.Payload.Priorities[0] : null;
                     Settings.PayloadClass.TestSet expectedts = null;
@@ -504,6 +545,12 @@ namespace button_tester
                     int[] linkedpins = new int[16];  // linkedpin[i]=j means pin i is on because of j
                     for (int i = 0; i < 16; ++i) linkedpins[i] = -1;
 
+                    // drive motor (di14 and di15 alternate (overlapping) -> drives either di6 or di7)
+                    bool? LastD14 = null;
+                    DateTime LastDriveMotorTick = DateTime.Now;
+
+                    string OldCurrVal = null;
+
                     // last counter change
                     long lastcounter = -1;
                     DateTime lastcounterupdate = DateTime.Now;
@@ -520,7 +567,7 @@ namespace button_tester
                     // test pilot light on
                     if (settings.Payload.TestPilotLightPin.HasValue)
                         LJ.SetDigitalOutput(
-                            settings.Payload.TestPilotLightPin.Value+1,
+                            settings.Payload.TestPilotLightPin.Value + 1,
                             true,
                             1);
 
@@ -540,7 +587,7 @@ namespace button_tester
                             {
                                 lastcounter = counter; lastcounterupdate = DateTime.Now;
                             }
-                            else if ((DateTime.Now - lastcounterupdate).TotalMilliseconds> settings.Payload.LastCounterChangeMovementCap)
+                            else if ((DateTime.Now - lastcounterupdate).TotalMilliseconds > settings.Payload.LastCounterChangeMovementCap)
                                 sign = 0;
                         }
 
@@ -605,6 +652,37 @@ namespace button_tester
                                     pass = true;
                                     break;
                                 }
+
+                        // drive motor
+                        if (settings.Payload.DriveMotor)
+                        {
+                            if (!LastD14.HasValue)
+                            {
+                                // init
+                                LastD14 = State[14] != 0;
+                                LastDriveMotorTick = DateTime.Now;
+                            }
+                            else if (LastD14 != (State[14] != 0))
+                            {
+                                // change
+                                LastD14 = State[14] != 0;
+                                LastDriveMotorTick = DateTime.Now;
+
+                                // if on
+                                if (State[14] != 0)
+                                {
+                                    // set the motors depending on direction (if the overlapping wave is on)
+                                    LJ.SetDigitalOutput(7, true, State[15]);
+                                    LJ.SetDigitalOutput(8, true, 1 - State[15]);
+                                }
+                            }
+                            else if (LastDriveMotorTick != null && (DateTime.Now - LastDriveMotorTick).TotalSeconds > 1.5)
+                            {
+                                // no tick, stop the motors
+                                LJ.SetDigitalOutput(7, true, 0);
+                                LJ.SetDigitalOutput(8, true, 0);
+                            }
+                        }
 
                         // hysteresis logic (ignore ai0)
                         // also contains code to show the current values
@@ -688,10 +766,15 @@ namespace button_tester
 
                         // flush the current display string
                         string cv = currvalsb.ToString();
-                        Invoke(new MethodInvoker(delegate
-                            {
-                                lblCurrentValues.Text = cv;
-                            }));
+                        if (cv != OldCurrVal)
+                        {
+                            OldCurrVal = cv;
+                            Invoke(new MethodInvoker(delegate
+                                {
+                                    if (lblCurrentValues.Text != cv)
+                                        lblCurrentValues.Text = cv;
+                                }));
+                        }
 
                         // linked pins
                         foreach (var lkvp in settings.Payload.Links)
@@ -824,6 +907,13 @@ namespace button_tester
 
                         }
 
+                        lock (ThreadSync)
+                        {
+                            StateSnapshot = RealState;
+                            AStateSnapshot = astate;
+
+                        }
+
                         // are we waiting on any test?
                         if (expectedts != null)
                         {
@@ -858,21 +948,21 @@ namespace button_tester
                             else
                             {
                                 // if not, is the result really happening?
-                                bool ok = false;
-                                switch (expectedts.Result)
-                                {
-                                    case Settings.PayloadClass.TestSet.ResultType.Down:
-                                        ok = sign == -1;
-                                        break;
-                                    case Settings.PayloadClass.TestSet.ResultType.StayStill:
-                                        ok = sign == 0;
-                                        break;
-                                    case Settings.PayloadClass.TestSet.ResultType.Up:
-                                        ok = sign == 1;
-                                        break;
-                                }
+                                //bool ok = false;
+                                //switch (expectedts.Result)
+                                //{
+                                //    case Settings.PayloadClass.TestSet.ResultType.Down:
+                                //        ok = sign == -1;
+                                //        break;
+                                //    case Settings.PayloadClass.TestSet.ResultType.StayStill:
+                                //        ok = sign == 0;
+                                //        break;
+                                //    case Settings.PayloadClass.TestSet.ResultType.Up:
+                                //        ok = sign == 1;
+                                //        break;
+                                //}
 
-                                if (ok)
+                                if (expectedts.Result.Evaluate(RealState, astate, settings))
                                 {
                                     // all's fine!
                                     expectedts = null;
@@ -981,12 +1071,12 @@ namespace button_tester
                             settings.Payload.HysteresisAI.ContainsKey(4)
                             ? oldAI[4].ToString() : "0.0");
 
-                        using (var s1 = File.Open(fdSaveLog.FileName, FileMode.Append, FileAccess.Write, FileShare.ReadWrite))
+                        using (var s1 = File.Open(logfilename, FileMode.Append, FileAccess.Write, FileShare.ReadWrite))
                         using (var stream = new StreamWriter(s1))
                             stream.WriteLine(sb.ToString());
                     }
 
-                    using (var s1 = File.Open(fdSaveLog.FileName, FileMode.Append, FileAccess.Write, FileShare.ReadWrite))
+                    using (var s1 = File.Open(logfilename, FileMode.Append, FileAccess.Write, FileShare.ReadWrite))
                     using (var stream = new StreamWriter(s1))
                         stream.WriteLine("END,Thread terminated," +
                             DateTime.Now.ToString() + "," + cyclecounter + " cycles," +
@@ -1039,11 +1129,18 @@ namespace button_tester
 
         private void mnuRun_Click(object sender, EventArgs e)
         {
-            Run(false);
+            // get the log file name
+            if (fdSaveLog.ShowDialog() != DialogResult.OK)
+                return;
+
+            Run(false, fdSaveLog.FileName);
         }
 
         private void mnuStop_Click(object sender, EventArgs e)
         {
+            var key = Registry.CurrentUser.CreateSubKey(@"Software\SS\Button Tester");
+            key.SetValue("Last Log", "");
+
             // stop the timers
             lblCountdown.Text = "";
             lblBreak.Text = "";
@@ -1080,22 +1177,25 @@ namespace button_tester
             lblDirection.Text = "";
         }
 
-        void ClearMarks()
+        void ClearMarks(int except = -1)
         {
+            var idx = 0;
             foreach (ListViewItem line in lvMain.Items)
-            {
-                if (line.SubItems[3].Text != "")
-                    line.SubItems[3].Text = "";
+                if (idx++ != except)
+                {
+                    if (line.SubItems[3].Text != "")
+                        line.SubItems[3].Text = "";
 
-                if (line.BackColor != SystemColors.Window)
-                    line.BackColor = SystemColors.Window;
+                    if (line.BackColor != SystemColors.Window)
+                        line.BackColor = SystemColors.Window;
 
-                if (line.ForeColor != SystemColors.ControlText)
-                    line.ForeColor = SystemColors.ControlText;
-            }
+                    if (line.ForeColor != SystemColors.ControlText)
+                        line.ForeColor = SystemColors.ControlText;
+                }
         }
 
         object ThreadSync = new object();
+        bool InWaitForCondition = false;
 
         private void tmrLoop_Tick(object sender, EventArgs e)
         {
@@ -1135,9 +1235,11 @@ namespace button_tester
             }
 
             // mark our current step
-            ClearMarks();
-            lvMain.Items[settings.IP].BackColor = Color.Green;
-            lvMain.Items[settings.IP].ForeColor = Color.White;
+            ClearMarks(settings.IP);
+            if (lvMain.Items[settings.IP].BackColor != Color.Green)
+                lvMain.Items[settings.IP].BackColor = Color.Green;
+            if (lvMain.Items[settings.IP].ForeColor != Color.White)
+                lvMain.Items[settings.IP].ForeColor = Color.White;
             lvMain.EnsureVisible(settings.IP);
 
             // interpret our current step
@@ -1178,6 +1280,25 @@ namespace button_tester
             }
             else if (settings.Payload.Actions[settings.IP] is Settings.PayloadClass.ActionEnd)
                 mnuStop.PerformClick();
+            else if (settings.Payload.Actions[settings.IP] is Settings.PayloadClass.ActionWaitForCondition)
+            {
+                tmrLoop.Interval = 15;
+                NextEvent = DateTime.Now.AddMilliseconds(tmrLoop.Interval);
+
+                int[] state = null;
+                double[] astate = null;
+
+                lock (ThreadSync)
+                {
+                    state = StateSnapshot;
+                    astate = AStateSnapshot;
+                }
+
+                InWaitForCondition = state != null && astate != null
+                    ? !((Settings.PayloadClass.ActionWaitForCondition)settings.Payload.Actions[settings.IP])
+                        .Condition.Evaluate(state, astate, settings)
+                    : true;
+            }
 
             if (BreakEnabled && --LinesToBreak == 0)
             {
@@ -1200,20 +1321,23 @@ namespace button_tester
                 LJ.SetDigitalOutput(settings.Payload.PowerOffPin, true, 1);
             }
 
-            if (RunRandom)
-                settings.IP = settings.Random.Next(settings.Payload.Actions.Count);
-            else
-            {
-                ++settings.IP;
-                if (settings.IP >= settings.Payload.Actions.Count)
-                    settings.IP = 0;
-            }
+            if (!InWaitForCondition)
+                if (RunRandom)
+                    settings.IP = settings.Random.Next(settings.Payload.Actions.Count);
+                else
+                {
+                    ++settings.IP;
+                    if (settings.IP >= settings.Payload.Actions.Count)
+                        settings.IP = 0;
+                }
         }
 
         private void tmrCountdown_Tick(object sender, EventArgs e)
         {
             DateTime now = DateTime.Now;
-            if (now.CompareTo(NextEvent) >= 0)
+            if (InWaitForCondition)
+                lblCountdown.Text = "Waiting";
+            else if (now.CompareTo(NextEvent) >= 0)
                 lblCountdown.Text = "00:00:00";
             else
             {
@@ -1227,7 +1351,7 @@ namespace button_tester
 
                 lblCountdown.Text = //new DateTime((NextEvent - DateTime.Now).Ticks)
                     //.ToString("mm:ss.fff");
-                    string.Format("{0}:{1:00}:{2:00}", h, m, s);
+                    string.Format("{0:00}:{1:00}:{2:00}", h, m, s);
             }
 
             if (LinesToBreak > 0)
@@ -1243,7 +1367,11 @@ namespace button_tester
 
         private void mnuRunRandom_Click(object sender, EventArgs e)
         {
-            Run(true);
+            // get the log file name
+            if (fdSaveLog.ShowDialog() != DialogResult.OK)
+                return;
+
+            Run(true, fdSaveLog.FileName);
         }
 
         private void mnuOptions_Click(object sender, EventArgs e)

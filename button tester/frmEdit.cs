@@ -24,6 +24,8 @@ namespace button_tester
         {
             InitializeComponent();
             this.settings = settings;
+
+            txtButtonPressTest.Settings = txtDelayPressTest.Settings = txtWaitForConditionCondition.Settings = settings;
         }
 
         private void frmEdit_Load(object sender, EventArgs e)
@@ -49,6 +51,9 @@ namespace button_tester
 
                     chkUseAll.Checked = abp.UseAll;
 
+                    if (chkRequiresTestForButtonPress.Checked = abp.TestToPass != null)
+                        txtButtonPressTest.Text = abp.TestToPass.Expression;
+
                     tabMain.SelectedIndex = 0;
                 }
                 else if (ActionContainer.action is Settings.PayloadClass.ActionDelay)
@@ -58,10 +63,20 @@ namespace button_tester
                     txtRangeStart.Text = delay.Range.First.ToString();
                     txtRangeEnd.Text = delay.Range.Second.ToString();
 
+                    if (chkRequiresTestForDelay.Checked = delay.TestToPass != null)
+                        txtDelayPressTest.Text = delay.TestToPass.Expression;
+
                     tabMain.SelectedIndex = 1;
                 }
                 else if (ActionContainer.action is Settings.PayloadClass.ActionEnd)
                 {
+                    tabMain.SelectedIndex = 3;
+                }
+                else if (ActionContainer.action is Settings.PayloadClass.ActionWaitForCondition)
+                {
+                    txtWaitForConditionCondition.Text =
+                        ((Settings.PayloadClass.ActionWaitForCondition)ActionContainer.action)
+                        .Condition.Expression;
                     tabMain.SelectedIndex = 2;
                 }
                 else
@@ -103,6 +118,10 @@ namespace button_tester
                         abp.PressedTime.First = start;
                         abp.PressedTime.Second = end;
 
+                        abp.TestToPass = chkRequiresTestForButtonPress.Checked
+                            ? new TestExpression(txtButtonPressTest.Text)
+                            : null;
+
                         abp.UseAll = chkUseAll.Checked;
                     }
                     else
@@ -124,6 +143,10 @@ namespace button_tester
 
                         delay.Range.First = start;
                         delay.Range.Second = end;
+
+                        delay.TestToPass = chkRequiresTestForDelay.Checked
+                            ? new TestExpression(txtDelayPressTest.Text)
+                            : null;
                     }
                     else
                     {
@@ -135,6 +158,13 @@ namespace button_tester
                     break;
 
                 case 2:
+                    ActionContainer.action = new Settings.PayloadClass.ActionWaitForCondition
+                    {
+                        Condition = new TestExpression(txtWaitForConditionCondition.Text)
+                    };
+                    break;
+
+                case 3:
                     ActionContainer.action = new Settings.PayloadClass.ActionEnd();
 
                     break;
@@ -192,6 +222,16 @@ namespace button_tester
             lstButtons.Items[lstButtons.SelectedIndex] = eb.ButtonInfoContainer.buttontype.Name;
 
             //settings.SaveGlobals();
+        }
+
+        private void chkRequiresTestForButtonPress_CheckedChanged(object sender, EventArgs e)
+        {
+            txtButtonPressTest.Enabled = chkRequiresTestForButtonPress.Checked;
+        }
+
+        private void chkRequiresTestForDelay_CheckedChanged(object sender, EventArgs e)
+        {
+            txtDelayPressTest.Enabled = chkRequiresTestForDelay.Checked;
         }
     }
 }

@@ -63,48 +63,53 @@ namespace button_tester
             {
                 settings = value;
 
-                Dictionary<string, string> suggestions = GetRedefitionions(settings);
-
-                // clear the menu
-                mnuSuggestions.Items.Clear();
-
-                // fill in the suggestions
-                foreach (var suggestion in
-                    from ss in suggestions
-                    orderby ss.Value
-                    select ss)
-                {
-                    ToolStripMenuItem mnui = new ToolStripMenuItem(suggestion.Value + " (" + suggestion.Key + ")");
-                    mnui.Tag = "[" + suggestion.Value + "]";
-                    mnui.Click += new EventHandler(mnuSuggestionsItem_Click);
-                    mnuSuggestions.Items.Add(mnui);
-                }
-
-                mnuSuggestions.Items.Add(new ToolStripSeparator());
-
-                // door up/down/still
-                ToolStripMenuItem doorc = new ToolStripMenuItem("Door is going down");
-                doorc.Click += new EventHandler(mnuSuggestionsItem_Click);
-                doorc.Tag = " DoorDown ";
-                mnuSuggestions.Items.Add(doorc);
-
-                doorc = new ToolStripMenuItem("Door is still");
-                doorc.Click += new EventHandler(mnuSuggestionsItem_Click);
-                doorc.Tag = " DoorStill ";
-                mnuSuggestions.Items.Add(doorc);
-
-                doorc = new ToolStripMenuItem("Door is going up");
-                doorc.Click += new EventHandler(mnuSuggestionsItem_Click);
-                doorc.Tag = " DoorUp ";
-                mnuSuggestions.Items.Add(doorc);
-
-                mnuSuggestions.Items.Add(new ToolStripSeparator());
-
-                // customize
-                ToolStripMenuItem mnuc = new ToolStripMenuItem("Customize...");
-                mnuc.Click += new EventHandler(mnuSuggestionsCustomize_Click);
-                mnuSuggestions.Items.Add(mnuc);
+                RefreshMenu();
             }
+        }
+
+        private void RefreshMenu()
+        {
+            Dictionary<string, string> suggestions = GetRedefitionions(settings);
+
+            // clear the menu
+            mnuSuggestions.Items.Clear();
+
+            // fill in the suggestions
+            foreach (var suggestion in
+                from ss in suggestions
+                orderby ss.Value
+                select ss)
+            {
+                ToolStripMenuItem mnui = new ToolStripMenuItem(suggestion.Value + " (" + suggestion.Key + ")");
+                mnui.Tag = "[" + suggestion.Value + "]";
+                mnui.Click += new EventHandler(mnuSuggestionsItem_Click);
+                mnuSuggestions.Items.Add(mnui);
+            }
+
+            mnuSuggestions.Items.Add(new ToolStripSeparator());
+
+            // door up/down/still
+            ToolStripMenuItem doorc = new ToolStripMenuItem("Door is going down");
+            doorc.Click += new EventHandler(mnuSuggestionsItem_Click);
+            doorc.Tag = " DoorDown ";
+            mnuSuggestions.Items.Add(doorc);
+
+            doorc = new ToolStripMenuItem("Door is still");
+            doorc.Click += new EventHandler(mnuSuggestionsItem_Click);
+            doorc.Tag = " DoorStill ";
+            mnuSuggestions.Items.Add(doorc);
+
+            doorc = new ToolStripMenuItem("Door is going up");
+            doorc.Click += new EventHandler(mnuSuggestionsItem_Click);
+            doorc.Tag = " DoorUp ";
+            mnuSuggestions.Items.Add(doorc);
+
+            mnuSuggestions.Items.Add(new ToolStripSeparator());
+
+            // customize
+            ToolStripMenuItem mnuc = new ToolStripMenuItem("Customize...");
+            mnuc.Click += new EventHandler(mnuSuggestionsCustomize_Click);
+            mnuSuggestions.Items.Add(mnuc);
         }
 
         void mnuSuggestionsCustomize_Click(object sender, EventArgs e)
@@ -130,6 +135,7 @@ namespace button_tester
                 new Point(btnAutoComplete.Left + btnAutoComplete.Width,
                     btnAutoComplete.Top));
 
+            RefreshMenu();
             mnuSuggestions.Show(pt);
         }
     }

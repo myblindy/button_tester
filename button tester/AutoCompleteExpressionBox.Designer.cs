@@ -38,9 +38,7 @@
             // 
             // txtExpression
             // 
-            this.txtExpression.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtExpression.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtExpression.Location = new System.Drawing.Point(0, 0);
             this.txtExpression.Multiline = true;
             this.txtExpression.Name = "txtExpression";
@@ -49,8 +47,7 @@
             // 
             // btnAutoComplete
             // 
-            this.btnAutoComplete.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAutoComplete.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnAutoComplete.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnAutoComplete.Location = new System.Drawing.Point(277, 0);
             this.btnAutoComplete.Name = "btnAutoComplete";
@@ -65,21 +62,21 @@
             this.mnuSuggestions.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.noSuggestionsToolStripMenuItem});
             this.mnuSuggestions.Name = "mnuSuggestions";
-            this.mnuSuggestions.Size = new System.Drawing.Size(166, 26);
+            this.mnuSuggestions.Size = new System.Drawing.Size(163, 26);
             // 
             // noSuggestionsToolStripMenuItem
             // 
             this.noSuggestionsToolStripMenuItem.Enabled = false;
             this.noSuggestionsToolStripMenuItem.Name = "noSuggestionsToolStripMenuItem";
-            this.noSuggestionsToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.noSuggestionsToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
             this.noSuggestionsToolStripMenuItem.Text = "(no suggestions)";
             // 
             // AutoCompleteExpressionBox
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.btnAutoComplete);
             this.Controls.Add(this.txtExpression);
+            this.Controls.Add(this.btnAutoComplete);
             this.Name = "AutoCompleteExpressionBox";
             this.Size = new System.Drawing.Size(304, 163);
             this.Load += new System.EventHandler(this.AutoCompleteExpressionBox_Load);

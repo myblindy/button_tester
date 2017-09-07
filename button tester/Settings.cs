@@ -13,7 +13,7 @@ namespace button_tester
     {
         [Serializable]
         [XmlInclude(typeof(ActionButtonPress)), XmlInclude(typeof(ActionDelay))]
-        [XmlInclude(typeof(ActionEnd))]
+        [XmlInclude(typeof(ActionEnd)), XmlInclude(typeof(ActionWaitForCondition))]
         public class PayloadClass
         {
             [Serializable]
@@ -23,6 +23,8 @@ namespace button_tester
             {
                 public abstract string GetTypeName();
                 public abstract string GetDetails();
+
+                public TestExpression TestToPass { get; set; }
             }
 
             /// <summary>
@@ -60,9 +62,9 @@ namespace button_tester
                     foreach (var btn in Buttons)
                     {
                         if (!first)
-                            ret += UseAll?"+":",";
+                            ret += UseAll ? "+" : ",";
 
-                        ret += btn.Name+"("+btn.PinID+")";
+                        ret += btn.Name + "(" + btn.PinID + ")";
 
                         first = false;
                     }
@@ -99,6 +101,30 @@ namespace button_tester
                         return Range.First + "s";
                     else
                         return Range.First + "s - " + Range.Second + "s";
+                }
+            }
+
+            /// <summary>
+            /// Waits for a condition to become true before continuing
+            /// </summary>
+            [Serializable]
+            public class ActionWaitForCondition : Action
+            {
+                public TestExpression Condition { get; set; }
+
+                public ActionWaitForCondition()
+                {
+                    Condition = new TestExpression();
+                }
+
+                public override string GetTypeName()
+                {
+                    return "Condition";
+                }
+
+                public override string GetDetails()
+                {
+                    return Condition.Expression ?? "";
                 }
             }
 
@@ -166,8 +192,8 @@ namespace button_tester
                 public TestExpression ExitCondition { get; set; }
                 public List<Pair<int, PriorityState>> PriorityOrder { get; set; }
 
-                public Priority() 
-                { 
+                public Priority()
+                {
                     Condition = new TestExpression();
                     ExitCondition = new TestExpression();
                     PriorityOrder = new List<Pair<int, PriorityState>>();
@@ -177,13 +203,13 @@ namespace button_tester
                     return PriorityOrder.Aggregate("Order: ", (a, n) =>
                     {
                         string b = "", e = "";
-                        if(n.Second== PriorityState.NotUsed)   
+                        if (n.Second == PriorityState.NotUsed)
                         {
                             b = "("; e = ")";
                         }
-                        else if(n.Second== PriorityState.NotUsedAndReset)
+                        else if (n.Second == PriorityState.NotUsedAndReset)
                         {
-                            b="[";e="]";
+                            b = "["; e = "]";
                         }
 
                         return a + b + (n.First + 1) + e + " ";
@@ -204,16 +230,17 @@ namespace button_tester
 
                 public TestExpression Condition { get; set; }
                 public int Delay { get; set; }
-                public ResultType Result { get; set; }
+                public TestExpression Result { get; set; }
 
                 public override string ToString()
                 {
-                    return Condition.Expression + ": " + Result;
+                    return Condition.Expression + ": " + Result.Expression;
                 }
 
                 public TestSet()
                 {
                     Condition = new TestExpression();
+                    Result = new TestExpression();
                 }
             }
 
@@ -227,6 +254,8 @@ namespace button_tester
             public SerializableDictionary<int, int> Links { get; set; }
 
             public bool ReverseDirection { get; set; }
+
+            public bool DriveMotor { get; set; }
 
             public enum HysteresisKind
             {
@@ -286,14 +315,21 @@ namespace button_tester
 
             PayloadClass pc;
             using (FileStream stream = File.OpenRead(FileName = file))
-                pc = (PayloadClass)DeSerializer.Deserialize(stream);
+                try
+                {
+                    pc = (PayloadClass)DeSerializer.Deserialize(stream);
+                }
+                catch
+                {
+                    pc = new PayloadClass();
+                }
 
             if (pc.Buttons.Count == 0 && pc.Priorities.Count != 0)
             {
                 if (MessageBox.Show("The file you are trying to load doesn't contain any buttons, " +
                     "but there are priority sets referencing them. Would you want me to try to " +
-                    "fill in buttons from the registry (from the old version of the button lists)?\n\n"+
-                    "This may not work and it might render the entire file unusable. Please "+
+                    "fill in buttons from the registry (from the old version of the button lists)?\n\n" +
+                    "This may not work and it might render the entire file unusable. Please " +
                     "test it thoroughly before saving!",
                     "Error", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {

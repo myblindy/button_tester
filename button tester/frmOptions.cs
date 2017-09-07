@@ -107,6 +107,8 @@ namespace button_tester
                 txtAI4To.Text = settings.Payload.HysteresisAI[4].To.ToString();
                 txtAI4Pin.Text = (settings.Payload.HysteresisAI[4].PinID).ToString();
             }
+
+            chkDriveMotor.Checked = settings.Payload.DriveMotor;
         }
 
         private void btnOK_Click(object sender, EventArgs e)
@@ -232,6 +234,8 @@ namespace button_tester
                         To = ai4_to,
                         PinID = ai4_pin
                     });
+
+                settings.Payload.DriveMotor = chkDriveMotor.Checked;
 
                 DialogResult = DialogResult.OK;
                 Close();

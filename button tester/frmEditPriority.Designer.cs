@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txtTestExpression = new button_tester.AutoCompleteExpressionBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lstButtonOrder = new System.Windows.Forms.CheckedListBox();
             this.btnMoveDown = new System.Windows.Forms.Button();
@@ -38,6 +37,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.txtExitCondition = new button_tester.AutoCompleteExpressionBox();
+            this.txtTestExpression = new button_tester.AutoCompleteExpressionBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -52,13 +52,6 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "The test expression";
-            // 
-            // txtTestExpression
-            // 
-            this.txtTestExpression.Location = new System.Drawing.Point(6, 19);
-            this.txtTestExpression.Name = "txtTestExpression";
-            this.txtTestExpression.Size = new System.Drawing.Size(327, 45);
-            this.txtTestExpression.TabIndex = 0;
             // 
             // groupBox2
             // 
@@ -138,6 +131,13 @@
             this.txtExitCondition.Size = new System.Drawing.Size(327, 45);
             this.txtExitCondition.TabIndex = 0;
             // 
+            // txtTestExpression
+            // 
+            this.txtTestExpression.Location = new System.Drawing.Point(6, 19);
+            this.txtTestExpression.Name = "txtTestExpression";
+            this.txtTestExpression.Size = new System.Drawing.Size(327, 45);
+            this.txtTestExpression.TabIndex = 0;
+            // 
             // frmEditPriority
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -148,9 +148,11 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmEditPriority";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Edit the priority";
             this.Load += new System.EventHandler(this.frmEditPriority_Load);
             this.groupBox1.ResumeLayout(false);

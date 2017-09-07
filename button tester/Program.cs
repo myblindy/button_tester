@@ -11,11 +11,11 @@ namespace button_tester
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main()
+        static void Main(string[] parameters)
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmMain());
+            Application.Run(new frmMain(parameters.Any() ? parameters[0] : null));
         }
     }
 }

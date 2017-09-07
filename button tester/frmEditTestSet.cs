@@ -39,9 +39,10 @@ namespace button_tester
             {
                 testset.Condition = new TestExpression(txtCondition.Text);
                 testset.Delay = (int)(double.Parse(txtDelay.Text) * 1000.0f);
-                testset.Result = (Settings.PayloadClass.TestSet.ResultType)Enum.Parse(
-                    typeof(Settings.PayloadClass.TestSet.ResultType),
-                    (string)cmbResult.SelectedItem);
+                //testset.Result = (Settings.PayloadClass.TestSet.ResultType)Enum.Parse(
+                //    typeof(Settings.PayloadClass.TestSet.ResultType),
+                //    (string)cmbResult.SelectedItem);
+                testset.Result = new TestExpression(txtResult.Text);
             }
             catch
             {
@@ -55,12 +56,9 @@ namespace button_tester
 
         private void frmEditTestSet_Load(object sender, EventArgs e)
         {
-            txtCondition.Settings = settings;
+            txtCondition.Settings = txtResult.Settings = settings;
             txtCondition.Text = testset.Condition.Expression;
-
-            foreach (var s in Enum.GetNames(typeof(Settings.PayloadClass.TestSet.ResultType)))
-                cmbResult.Items.Add(s);
-            cmbResult.SelectedItem = testset.Result.ToString();
+            txtResult.Text = testset.Result.Expression;
 
             txtDelay.Text = (testset.Delay / 1000.0f).ToString();
         }
