@@ -555,6 +555,8 @@ namespace button_tester
                     long lastcounter = -1;
                     DateTime lastcounterupdate = DateTime.Now;
 
+                    var lastlinewritten = DateTime.Now;
+
                     float oldTemp = 0.0f, oldRH = 0.0f;
                     float[] oldAI = new float[8];
                     SetupInitialHysteresis(oldAI, ref oldTemp, ref oldRH, settings);
@@ -1047,6 +1049,7 @@ namespace button_tester
                         sb.Append(DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff"));
                         sb.Append("\"");
                         sb.Append(",");
+                        sb.Append((DateTime.Now - lastlinewritten).TotalSeconds.ToString("R")); lastlinewritten = DateTime.Now;
                         sb.Append(
                             settings.Payload.Hysteresis.ContainsKey(Settings.PayloadClass.HysteresisKind.Temperature)
                             ? oldTemp.ToString() : "0.0");
@@ -1350,7 +1353,7 @@ namespace button_tester
                 int h = (int)tms;
 
                 lblCountdown.Text = //new DateTime((NextEvent - DateTime.Now).Ticks)
-                    //.ToString("mm:ss.fff");
+                                    //.ToString("mm:ss.fff");
                     string.Format("{0:00}:{1:00}:{2:00}", h, m, s);
             }
 
