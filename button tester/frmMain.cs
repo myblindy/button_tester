@@ -549,13 +549,13 @@ namespace button_tester
                     bool? LastD14 = null;
                     DateTime LastDriveMotorTick = DateTime.Now;
 
+                    DateTime? firstloglinetime = null;
+
                     string OldCurrVal = null;
 
                     // last counter change
                     long lastcounter = -1;
                     DateTime lastcounterupdate = DateTime.Now;
-
-                    var lastlinewritten = DateTime.Now;
 
                     float oldTemp = 0.0f, oldRH = 0.0f;
                     float[] oldAI = new float[8];
@@ -1049,7 +1049,10 @@ namespace button_tester
                         sb.Append(DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff"));
                         sb.Append("\"");
                         sb.Append(",");
-                        sb.Append((DateTime.Now - lastlinewritten).TotalSeconds.ToString("R")); lastlinewritten = DateTime.Now;
+                        var now = DateTime.Now;
+                        if (!firstloglinetime.HasValue) firstloglinetime = now;
+                        sb.Append((now - firstloglinetime.Value).TotalSeconds.ToString("R"));
+                        sb.Append(",");
                         sb.Append(
                             settings.Payload.Hysteresis.ContainsKey(Settings.PayloadClass.HysteresisKind.Temperature)
                             ? oldTemp.ToString() : "0.0");
