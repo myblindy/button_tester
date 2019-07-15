@@ -24,7 +24,7 @@ namespace button_tester
 
         private void frmEditLink_Load(object sender, EventArgs e)
         {
-            for (int i = 1; i <= 16; ++i)
+            for (var i = 1; i <= 16; ++i)
             {
                 cmbFrom.Items.Add("D" + i);
                 cmbTo.Items.Add("D" + i);

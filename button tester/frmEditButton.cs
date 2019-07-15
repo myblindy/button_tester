@@ -41,9 +41,8 @@ namespace button_tester
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            int pid;
 
-            if (int.TryParse(txtPinID.Text, out pid) && pid > 0)
+            if (int.TryParse(txtPinID.Text, out var pid) && pid > 0)
             {
                 if (txtButtonName.Text.Length > 0)
                 {

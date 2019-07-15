@@ -49,10 +49,10 @@ namespace button_tester
 #else
             lock (lockobj)
             {
-                int ljID = 0;
-                int state = 0;
+                var ljID = 0;
+                var state = 0;
 
-                int result = LabJack.EDigitalIn(ref ljID, 0, channel - 1, readD ? 1 : 0, ref state);
+                var result = LabJack.EDigitalIn(ref ljID, 0, channel - 1, readD ? 1 : 0, ref state);
                 if (result != 0)
                     throw new Exception("Error reading digital input");
 
@@ -73,9 +73,9 @@ namespace button_tester
 #else
             lock (lockobj)
             {
-                int ljID = 0;
+                var ljID = 0;
 
-                int result = LabJack.EDigitalOut(ref ljID, 0, channel - 1, writeD ? 1 : 0, state);
+                var result = LabJack.EDigitalOut(ref ljID, 0, channel - 1, writeD ? 1 : 0, state);
                 if (result != 0)
                     throw new Exception("Error setting digital output");
             }
@@ -89,7 +89,7 @@ namespace button_tester
 #else
             lock (lockobj)
             {
-                int ljID = 0;
+                var ljID = 0;
                 int stated=0, stateio=0;
                 uint cnt = 0;
 
@@ -110,9 +110,9 @@ namespace button_tester
 #else
             lock (lockobj)
             {
-                int ljID = 0;
+                var ljID = 0;
                 tempC = rh = 0.0f;
-                float tempF = 0.0f;
+                var tempF = 0.0f;
                 LabJack.SHT1X(ref ljID, 0, 0, 0 /*mode*/, 0 /*status*/,
                     ref tempC, ref tempF, ref rh);
             }
@@ -126,11 +126,11 @@ namespace button_tester
 #else
             lock (lockobj)
             {
-                int ljID = 0;
-                int overVoltage = 0;
-                float voltage = 0.0f;
+                var ljID = 0;
+                var overVoltage = 0;
+                var voltage = 0.0f;
 
-                int result = LabJack.EAnalogIn(ref ljID, 0, channel, 0, ref overVoltage, ref voltage);
+                var result = LabJack.EAnalogIn(ref ljID, 0, channel, 0, ref overVoltage, ref voltage);
                 if (result != 0)
                     throw new Exception("Error reading analog input");
                 return voltage;
@@ -154,13 +154,13 @@ namespace button_tester
 #else
             lock (lockobj)
             {
-                int ljID = 0;
-                int outputd = 0;
-                int trisd = 0xff00;
-                int stateio = 0;
-                int stated = 0;
+                var ljID = 0;
+                var outputd = 0;
+                var trisd = 0xff00;
+                var stateio = 0;
+                var stated = 0;
 
-                int res = LabJack.DigitalIO(ref ljID, 0, ref trisd, 0, ref stated, ref stateio,
+                var res = LabJack.DigitalIO(ref ljID, 0, ref trisd, 0, ref stated, ref stateio,
                     0, ref outputd);
                 if (res != 0)
                     throw new Exception("Error reading digital inputs");
@@ -172,7 +172,7 @@ namespace button_tester
 
         public static void ResetOutputs()
         {
-            for (int i = 1; i <= 8; ++i)
+            for (var i = 1; i <= 8; ++i)
                 SetDigitalOutput(i, true, 0);
         }
 

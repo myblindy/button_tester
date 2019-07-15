@@ -27,7 +27,7 @@ namespace button_tester
 
         private KeyValuePair<int, string> GetKVP(string s)
         {
-            int middle = s.IndexOf(" = ");
+            var middle = s.IndexOf(" = ");
             string key = s.Substring(0, middle), val = s.Substring(middle + 3);
 
             return new KeyValuePair<int, string>(
@@ -60,7 +60,7 @@ namespace button_tester
             var frm = new AutoCompleteExpressionBoxCustomizationEdit();
             if (frm.ShowDialog() == DialogResult.OK)
             {
-                string key = "D" + frm.Payload.KVP.Value.Key;
+                var key = "D" + frm.Payload.KVP.Value.Key;
 
                 if (lstButtons.Items.Cast<string>().Any(
                     w => string.Compare(w, 0, key + " ", 0, key.Length + 1) == 0))
@@ -85,7 +85,7 @@ namespace button_tester
             frm.Payload.KVP = GetKVP(lstButtons.SelectedItem as string);
             if (frm.ShowDialog() == DialogResult.OK)
             {
-                string key = "D" + frm.Payload.KVP.Value.Key;
+                var key = "D" + frm.Payload.KVP.Value.Key;
 
                 if (lstButtons.Items.Cast<string>().Any(
                     w => string.Compare(w, 0, key + " ", 0, key.Length + 1) == 0))

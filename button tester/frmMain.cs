@@ -109,7 +109,7 @@ namespace button_tester
 
             // update the list view
             lvMain.Items.Clear();
-            int i = 0;
+            var i = 0;
 
             foreach (var act in settings.Payload.Actions)
                 lvMain.Items.Add(new ListViewItem(new string[]{
@@ -168,7 +168,7 @@ namespace button_tester
 
         void UpdateTitle()
         {
-            string appname = Process.GetCurrentProcess().ProcessName;
+            var appname = Process.GetCurrentProcess().ProcessName;
 
             if (settings.FileName != null)
                 Text = appname + " - " + Path.GetFileNameWithoutExtension(settings.FileName) + (settings.Dirty ? " *" : "");
@@ -271,7 +271,7 @@ namespace button_tester
         private void tmrUIUpdate_Tick(object sender, EventArgs e)
         {
             // can copy/cut/delete?
-            bool enabled = lvMain.SelectedIndices.Count > 0;
+            var enabled = lvMain.SelectedIndices.Count > 0;
 
             mnuCopy.Enabled = mnuCut.Enabled = mnuDelete.Enabled = tsbCopy.Enabled =
                 tsbCut.Enabled = enabled;
@@ -308,7 +308,7 @@ namespace button_tester
             if (lvMain.SelectedIndices.Count <= 0)
                 return;
 
-            Settings.PayloadClass.Action action = settings.Payload.Actions[lvMain.SelectedIndices[0]];
+            var action = settings.Payload.Actions[lvMain.SelectedIndices[0]];
 
             Clipboard.Clear();
             Clipboard.SetData("btprj clipboard", action);
@@ -330,7 +330,7 @@ namespace button_tester
             if (!Clipboard.ContainsData("btprj clipboard"))
                 return;
 
-            Settings.PayloadClass.Action action = Clipboard.GetData("btprj clipboard")
+            var action = Clipboard.GetData("btprj clipboard")
                 as Settings.PayloadClass.Action;
 
             if (action == null)
@@ -354,13 +354,13 @@ namespace button_tester
 
             SetDirty();
 
-            int i = lvMain.SelectedIndices[0];
+            var i = lvMain.SelectedIndices[0];
 
-            Settings.PayloadClass.Action temp = settings.Payload.Actions[i - 1];
+            var temp = settings.Payload.Actions[i - 1];
             settings.Payload.Actions[i - 1] = settings.Payload.Actions[i];
             settings.Payload.Actions[i] = temp;
 
-            ListViewItem temp2 = lvMain.Items[i - 1];
+            var temp2 = lvMain.Items[i - 1];
             lvMain.Items[i - 1] = lvMain.Items[i].Clone() as ListViewItem;
             lvMain.Items[i] = temp2;
 
@@ -380,13 +380,13 @@ namespace button_tester
 
             SetDirty();
 
-            int i = lvMain.SelectedIndices[0];
+            var i = lvMain.SelectedIndices[0];
 
-            Settings.PayloadClass.Action temp = settings.Payload.Actions[i + 1];
+            var temp = settings.Payload.Actions[i + 1];
             settings.Payload.Actions[i + 1] = settings.Payload.Actions[i];
             settings.Payload.Actions[i] = temp;
 
-            ListViewItem temp2 = lvMain.Items[i + 1];
+            var temp2 = lvMain.Items[i + 1];
             lvMain.Items[i + 1] = lvMain.Items[i].Clone() as ListViewItem;
             lvMain.Items[i] = temp2;
 
@@ -437,8 +437,9 @@ namespace button_tester
             {
                 var ps = priority.PriorityOrder
                     .Where(w => w.Second == Settings.PayloadClass.Priority.PriorityState.Used)
-                    .Select(w => settings.Payload.Buttons[w.First].Name + " (" + settings.Payload.Buttons[w.First].PinID + ")");
-                Invoke((MethodInvoker)delegate
+                    .Select(w => settings.Payload.Buttons[w.First].Name + " (" + settings.Payload.Buttons[w.First].PinID + ")")
+                    .ToList();
+                BeginInvoke((MethodInvoker)delegate
                 {
                     lstPriorities.Items.Clear();
                     foreach (var s in ps)
@@ -446,7 +447,7 @@ namespace button_tester
                 });
             }
             else
-                Invoke((MethodInvoker)delegate
+                BeginInvoke((MethodInvoker)delegate
                 {
                     lstPriorities.Items.Clear();
                     lstPriorities.Items.Add("(no priorities)");
@@ -455,7 +456,7 @@ namespace button_tester
 
         private string PrettyNumber(int n)
         {
-            string o = "";
+            var o = "";
 
             while (n > 0)
             {
@@ -524,30 +525,30 @@ namespace button_tester
             StopLoggingThread = false;
             lblCnt.Text = "Cnt:" + Environment.NewLine + (settings.Payload.UseCycles ? "0" : "--");
             lblErr.Text = "Err:" + Environment.NewLine + "0";
-            Thread thread = new Thread(() =>
+            var thread = new Thread(() =>
                 {
                     Thread.Sleep(500);
 
-                    Settings.PayloadClass.Priority priority =
+                    var priority =
                         settings.Payload.Priorities.Count > 0 ? settings.Payload.Priorities[0] : null;
                     Settings.PayloadClass.TestSet expectedts = null;
-                    DateTime expecteddate = DateTime.Now;
+                    var expecteddate = DateTime.Now;
                     int cyclecounter = 0, errorcounter = 0;
-                    bool lastcycletest = false;
-                    DateTime lastcycletime = DateTime.Now;
-                    int OldSign = 0;
-                    DateTime lastsignchange = DateTime.Now.Subtract(TimeSpan.FromMilliseconds(
+                    var lastcycletest = false;
+                    var lastcycletime = DateTime.Now;
+                    var OldSign = 0;
+                    var lastsignchange = DateTime.Now.Subtract(TimeSpan.FromMilliseconds(
                         settings.Payload.WaitBeforeAnalogChanges ?? 0));
                     int[] InputState = null;
                     DateTime? shutdowncounterpintime = null;
-                    int[] ResetPinPhases = new int[16];
-                    int[] OldRealState = new int[16]; OldRealState[0] = -1;
-                    int[] linkedpins = new int[16];  // linkedpin[i]=j means pin i is on because of j
-                    for (int i = 0; i < 16; ++i) linkedpins[i] = -1;
+                    var ResetPinPhases = new int[16];
+                    var OldRealState = new int[16]; OldRealState[0] = -1;
+                    var linkedpins = new int[16];  // linkedpin[i]=j means pin i is on because of j
+                    for (var i = 0; i < 16; ++i) linkedpins[i] = -1;
 
                     // drive motor (di14 and di15 alternate (overlapping) -> drives either di6 or di7)
                     bool? LastD14 = null;
-                    DateTime LastDriveMotorTick = DateTime.Now;
+                    var LastDriveMotorTick = DateTime.Now;
 
                     DateTime? firstloglinetime = null;
 
@@ -555,13 +556,13 @@ namespace button_tester
 
                     // last counter change
                     long lastcounter = -1;
-                    DateTime lastcounterupdate = DateTime.Now;
+                    var lastcounterupdate = DateTime.Now;
 
                     float oldTemp = 0.0f, oldRH = 0.0f;
-                    float[] oldAI = new float[8];
+                    var oldAI = new float[8];
                     SetupInitialHysteresis(oldAI, ref oldTemp, ref oldRH, settings);
 
-                    StringBuilder currvalsb = new StringBuilder();
+                    var currvalsb = new StringBuilder();
 
                     // fill in the priority list box
                     DisplayPriority(priority);
@@ -576,15 +577,15 @@ namespace button_tester
                     while (!StopLoggingThread)
                     {
                         // TODO: AI0
-                        float ai0 = LJ.ReadAnalogInput(0);
-                        int sign = (ai0 < settings.Payload.ZeroToleranceLow) ? -1 :
+                        var ai0 = LJ.ReadAnalogInput(0);
+                        var sign = (ai0 < settings.Payload.ZeroToleranceLow) ? -1 :
                             ((ai0 > settings.Payload.ZeroToleranceHigh) ? 1 : 0);
                         sign *= settings.Payload.ReverseDirection ? -1 : 1;
 
                         // adjust the sign if we put a cap on movement
                         if (settings.Payload.LastCounterChangeMovementCap > 0)
                         {
-                            long counter = LJ.ReadCounter(false);
+                            var counter = LJ.ReadCounter(false);
                             if (counter != lastcounter || lastcounter == -1)
                             {
                                 lastcounter = counter; lastcounterupdate = DateTime.Now;
@@ -594,7 +595,7 @@ namespace button_tester
                         }
 
                         string result;
-                        bool pass = InputState == null;
+                        var pass = InputState == null;
 
                         // counter pin
                         if (shutdowncounterpintime.HasValue &&
@@ -642,13 +643,13 @@ namespace button_tester
                             OldSign = sign;
                         }
 
-                        int[] State = new int[16];
-                        int states = LJ.ReadDigital();
-                        for (int i = 1; i <= 16; ++i)
+                        var State = new int[16];
+                        var states = LJ.ReadDigital();
+                        for (var i = 1; i <= 16; ++i)
                             State[i - 1] = (states & (1 << (i - 1))) > 0 ? 1 : 0;
 
                         if (InputState != null)
-                            for (int i = 0; i < 16; ++i)
+                            for (var i = 0; i < 16; ++i)
                                 if (State[i] != InputState[i])
                                 {
                                     pass = true;
@@ -689,12 +690,12 @@ namespace button_tester
                         // hysteresis logic (ignore ai0)
                         // also contains code to show the current values
                         currvalsb.Length = 0;
-                        for (int i = 1; i < 8; ++i)
+                        for (var i = 1; i < 8; ++i)
                         {
                             // TODO: AI0
                             if (settings.Payload.HysteresisAI.ContainsKey(i))
                             {
-                                float ai = LJ.ReadAnalogInput(i);
+                                var ai = LJ.ReadAnalogInput(i);
                                 currvalsb.AppendLine(string.Format("AI{0}: {1:0.00}v", i, ai));
 
                                 if (settings.Payload.HysteresisAI[i].PinID > 0)
@@ -719,8 +720,7 @@ namespace button_tester
                         if (settings.Payload.Hysteresis.ContainsKey(Settings.PayloadClass.HysteresisKind.Humidity) ||
                             settings.Payload.Hysteresis.ContainsKey(Settings.PayloadClass.HysteresisKind.Temperature))
                         {
-                            float temp, rh;
-                            LJ.ReadTemperatureHumidity(out temp, out rh);
+                            LJ.ReadTemperatureHumidity(out var temp, out var rh);
                             currvalsb.AppendLine(string.Format("Temp: {0:0.0}C", temp));
                             currvalsb.AppendLine(string.Format("Humidity: {0:0.0}", rh));
 
@@ -767,11 +767,11 @@ namespace button_tester
                         }
 
                         // flush the current display string
-                        string cv = currvalsb.ToString();
+                        var cv = currvalsb.ToString();
                         if (cv != OldCurrVal)
                         {
                             OldCurrVal = cv;
-                            Invoke(new MethodInvoker(delegate
+                            BeginInvoke(new MethodInvoker(delegate
                                 {
                                     if (lblCurrentValues.Text != cv)
                                         lblCurrentValues.Text = cv;
@@ -789,7 +789,7 @@ namespace button_tester
                             }
                         }
                         // clearing linked pins
-                        for (int i = 0; i < 16; ++i)
+                        for (var i = 0; i < 16; ++i)
                             if (linkedpins[i] >= 0)
                             {
                                 if (State[linkedpins[i]] == 0)
@@ -801,11 +801,11 @@ namespace button_tester
                             }
 
                         // pins waiting for a reset
-                        for (int i = 0; i < ResetPinPhases.Length; ++i)
+                        for (var i = 0; i < ResetPinPhases.Length; ++i)
                             if (State[i] == 0 && ResetPinPhases[i] == 1)
                                 ResetPinPhases[i] = 0;
 
-                        double[] astate = new double[] { ai0 };
+                        var astate = new double[] { ai0 };
 
                         // calculate any priority changes
                         if (priority != null && priority.ExitCondition.Evaluate(State, astate, settings))
@@ -813,8 +813,8 @@ namespace button_tester
                             IEnumerable<Settings.PayloadClass.Priority> ps;
                             if (priority.Condition.Evaluate(State, astate, settings))
                             {
-                                int currentindex = -1;
-                                for (int i = 0; i < settings.Payload.Priorities.Count; ++i)
+                                var currentindex = -1;
+                                for (var i = 0; i < settings.Payload.Priorities.Count; ++i)
                                     if (settings.Payload.Priorities[i] == priority)
                                         currentindex = i;
 
@@ -824,7 +824,7 @@ namespace button_tester
                             else
                                 ps = settings.Payload.Priorities.Select(w => w);
 
-                            foreach (var p in ps) //settings.Payload.Priorities)
+                            foreach (var p in ps)
                                 if (priority != p && p.Condition.Evaluate(State, astate, settings))
                                 {
                                     // first see what buttons have to be reset
@@ -859,8 +859,8 @@ namespace button_tester
 
                             Array.Copy(State, 8, RealState, 8, 8);
 
-                            bool invoke = false;
-                            for (int i = 0; i < 16; ++i)
+                            var invoke = false;
+                            for (var i = 0; i < 16; ++i)
                                 if (RealState[i] != OldRealState[i])
                                 {
                                     invoke = true;
@@ -870,9 +870,9 @@ namespace button_tester
                             // and display it!
                             if (invoke)
                             {
-                                int[] tmprealstate = new int[16];
+                                var tmprealstate = new int[16];
                                 Array.Copy(RealState, tmprealstate, 16);
-                                Invoke((MethodInvoker)delegate
+                                BeginInvoke((MethodInvoker)delegate
                                 {
                                     Debug.Print("inside the updater");
 
@@ -883,7 +883,7 @@ namespace button_tester
                                             item.ForeColor = SystemColors.ControlText;
                                         }
 
-                                    for (int i = 0; i < 8; ++i)
+                                    for (var i = 0; i < 8; ++i)
                                     {
                                         string partial = null;
                                         foreach (var b in settings.Payload.Buttons)
@@ -1003,10 +1003,8 @@ namespace button_tester
                                         });
                                         break;
                                     }
-                                    Invoke((MethodInvoker)delegate
-                                    {
-                                        lblCnt.Text = "Cnt:" + Environment.NewLine + PrettyNumber(cyclecounter);
-                                    });
+
+                                    BeginInvoke((MethodInvoker)(() => lblCnt.Text = "Cnt:" + Environment.NewLine + PrettyNumber(cyclecounter)));
 
                                     // output a pin
                                     if (settings.Payload.ClockOutputChannel.HasValue)
@@ -1032,9 +1030,9 @@ namespace button_tester
 
                         InputState = State;
 
-                        StringBuilder sb = new StringBuilder();
+                        var sb = new StringBuilder();
 
-                        for (int i = 1; i <= 16; ++i)
+                        for (var i = 1; i <= 16; ++i)
                         {
                             sb.Append(InputState[i - 1] == 0 ? "" : "On");
                             sb.Append(",");
@@ -1108,7 +1106,7 @@ namespace button_tester
 
         private void SetupInitialHysteresis(float[] oldAI, ref float oldTemp, ref float oldRH, Settings settings)
         {
-            for (int i = 0; i < 8; ++i)
+            for (var i = 0; i < 8; ++i)
             {
                 oldAI[i] = LJ.ReadAnalogInput(i);
                 if (settings.Payload.HysteresisAI.ContainsKey(i))
@@ -1274,7 +1272,7 @@ namespace button_tester
             }
             else if (settings.Payload.Actions[settings.IP] is Settings.PayloadClass.ActionDelay)
             {
-                Settings.PayloadClass.ActionDelay delay = settings.Payload.Actions[settings.IP]
+                var delay = settings.Payload.Actions[settings.IP]
                     as Settings.PayloadClass.ActionDelay;
 
                 // delay is in the interval
@@ -1340,20 +1338,20 @@ namespace button_tester
 
         private void tmrCountdown_Tick(object sender, EventArgs e)
         {
-            DateTime now = DateTime.Now;
+            var now = DateTime.Now;
             if (InWaitForCondition)
                 lblCountdown.Text = "Waiting";
             else if (now.CompareTo(NextEvent) >= 0)
                 lblCountdown.Text = "00:00:00";
             else
             {
-                double tms = (NextEvent - DateTime.Now).TotalMilliseconds;
+                var tms = (NextEvent - DateTime.Now).TotalMilliseconds;
                 tms /= 1000;
-                int s = (int)tms % 60;
+                var s = (int)tms % 60;
                 tms /= 60;
-                int m = (int)tms % 60;
+                var m = (int)tms % 60;
                 tms /= 60;
-                int h = (int)tms;
+                var h = (int)tms;
 
                 lblCountdown.Text = //new DateTime((NextEvent - DateTime.Now).Ticks)
                                     //.ToString("mm:ss.fff");

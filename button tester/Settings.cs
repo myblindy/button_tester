@@ -56,8 +56,8 @@ namespace button_tester
 
                 public override string GetDetails()
                 {
-                    bool first = true;
-                    string ret = "";
+                    var first = true;
+                    var ret = "";
 
                     foreach (var btn in Buttons)
                     {
@@ -311,10 +311,10 @@ namespace button_tester
 
         public bool Load(string file)
         {
-            XmlSerializer DeSerializer = new XmlSerializer(typeof(PayloadClass));
+            var DeSerializer = new XmlSerializer(typeof(PayloadClass));
 
             PayloadClass pc;
-            using (FileStream stream = File.OpenRead(FileName = file))
+            using (var stream = File.OpenRead(FileName = file))
                 try
                 {
                     pc = (PayloadClass)DeSerializer.Deserialize(stream);
@@ -335,15 +335,15 @@ namespace button_tester
                 {
                     try
                     {
-                        string log = "";
+                        var log = "";
 
-                        RegistryKey root = Registry.LocalMachine.OpenSubKey("software")
+                        var root = Registry.LocalMachine.OpenSubKey("software")
                             .OpenSubKey("ss").OpenSubKey("button tester");
-                        int n = (int)root.GetValue(null);
+                        var n = (int)root.GetValue(null);
 
-                        for (int i = 0; i < n; ++i)
+                        for (var i = 0; i < n; ++i)
                         {
-                            PayloadClass.ButtonType bt = new PayloadClass.ButtonType();
+                            var bt = new PayloadClass.ButtonType();
                             bt.Name = (string)root.GetValue("name_" + i);
                             bt.PinID = (int)root.GetValue("pinid_" + i);
 
@@ -389,10 +389,10 @@ namespace button_tester
 
         public void Save()
         {
-            XmlSerializer serializer = new XmlSerializer(typeof(PayloadClass));
+            var serializer = new XmlSerializer(typeof(PayloadClass));
 
             Payload.Version = ver;
-            using (FileStream fs = new FileStream(FileName, FileMode.Create))
+            using (var fs = new FileStream(FileName, FileMode.Create))
                 serializer.Serialize(fs, Payload);
 
             Dirty = false;

@@ -118,7 +118,7 @@ namespace button_tester
                 int linesStart = int.Parse(txtLinesStart.Text), linesEnd = int.Parse(txtLinesEnd.Text);
                 double offlineStart = double.Parse(txtOfflineStart.Text), offlineEnd = double.Parse(txtOfflineEnd.Text);
                 double offlineStart2 = double.Parse(txtOfflineStart2.Text), offlineEnd2 = double.Parse(txtOfflineEnd2.Text);
-                int poff = int.Parse(txtPowerOffPin.Text);
+                var poff = int.Parse(txtPowerOffPin.Text);
                 double
                     zerol = double.Parse(txtZeroToleranceLow.Text),
                     zeroh = double.Parse(txtZeroToleranceHigh.Text);
@@ -142,7 +142,7 @@ namespace button_tester
                     ai2_pin = chkAI2.Checked ? int.Parse(txtAI2Pin.Text) : 0,
                     ai3_pin = chkAI3.Checked ? int.Parse(txtAI3Pin.Text) : 0,
                     ai4_pin = chkAI4.Checked ? int.Parse(txtAI4Pin.Text) : 0;
-                double countercap = double.Parse(txtCounterChangeCap.Text);
+                var countercap = double.Parse(txtCounterChangeCap.Text);
 
                 if (linesEnd < linesStart || offlineEnd < offlineStart || offlineEnd2 < offlineStart2
                     || !LJ.ValidPin(poff) || (chkHumidity.Checked && !LJ.ValidPinAny(h_pin))
@@ -256,7 +256,7 @@ namespace button_tester
 
         private void btnAddNewCondition_Click(object sender, EventArgs e)
         {
-            Settings.PayloadClass.Priority priority = new Settings.PayloadClass.Priority();
+            var priority = new Settings.PayloadClass.Priority();
             if (new frmEditPriority(settings, priority).ShowDialog() == DialogResult.OK)
             {
                 lstPriorities.Items.Add(priority);
@@ -265,7 +265,7 @@ namespace button_tester
 
         private void btnEditCondition_Click(object sender, EventArgs e)
         {
-            Settings.PayloadClass.Priority priority = (Settings.PayloadClass.Priority)lstPriorities.SelectedItem;
+            var priority = (Settings.PayloadClass.Priority)lstPriorities.SelectedItem;
             if (priority != null && new frmEditPriority(settings, priority).ShowDialog() == DialogResult.OK)
             {
                 lstPriorities.Items[lstPriorities.SelectedIndex] = priority;
@@ -282,7 +282,7 @@ namespace button_tester
 
         private void btnAddNewTestSet_Click(object sender, EventArgs e)
         {
-            Settings.PayloadClass.TestSet ts = new Settings.PayloadClass.TestSet();
+            var ts = new Settings.PayloadClass.TestSet();
             if (new frmEditTestSet(settings, ts).ShowDialog() == DialogResult.OK)
             {
                 lstTestSets.Items.Add(ts);
@@ -293,7 +293,7 @@ namespace button_tester
         {
             try
             {
-                Settings.PayloadClass.TestSet ts = (Settings.PayloadClass.TestSet)lstTestSets.SelectedItem;
+                var ts = (Settings.PayloadClass.TestSet)lstTestSets.SelectedItem;
                 if (new frmEditTestSet(settings, ts).ShowDialog() == DialogResult.OK)
                     lstTestSets.Items[lstTestSets.SelectedIndex] = ts;
             }

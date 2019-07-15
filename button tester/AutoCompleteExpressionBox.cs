@@ -34,12 +34,12 @@ namespace button_tester
 
         public static Dictionary<string, string> GetRedefitionions(Settings settings)
         {
-            Dictionary<string, string> suggestions = new Dictionary<string, string>();
+            var suggestions = new Dictionary<string, string>();
 
             // first read the settings for the default buttons
             foreach (var button in settings.Payload.Buttons)
             {
-                string key = "D" + button.PinID;
+                var key = "D" + button.PinID;
                 if (!suggestions.Keys.Contains(key))
                     suggestions.Add(key, button.Name);
             }
@@ -47,7 +47,7 @@ namespace button_tester
             // let the user redefine as he sees fit
             foreach (var redefinition in settings.Payload.DigitalNameOverrides)
             {
-                string key = "D" + redefinition.Key;
+                var key = "D" + redefinition.Key;
                 if (suggestions.Keys.Contains(key))
                     suggestions[key] = redefinition.Value;
                 else
@@ -69,7 +69,7 @@ namespace button_tester
 
         private void RefreshMenu()
         {
-            Dictionary<string, string> suggestions = GetRedefitionions(settings);
+            var suggestions = GetRedefitionions(settings);
 
             // clear the menu
             mnuSuggestions.Items.Clear();
@@ -80,7 +80,7 @@ namespace button_tester
                 orderby ss.Value
                 select ss)
             {
-                ToolStripMenuItem mnui = new ToolStripMenuItem(suggestion.Value + " (" + suggestion.Key + ")");
+                var mnui = new ToolStripMenuItem(suggestion.Value + " (" + suggestion.Key + ")");
                 mnui.Tag = "[" + suggestion.Value + "]";
                 mnui.Click += new EventHandler(mnuSuggestionsItem_Click);
                 mnuSuggestions.Items.Add(mnui);
@@ -89,7 +89,7 @@ namespace button_tester
             mnuSuggestions.Items.Add(new ToolStripSeparator());
 
             // door up/down/still
-            ToolStripMenuItem doorc = new ToolStripMenuItem("Door is going down");
+            var doorc = new ToolStripMenuItem("Door is going down");
             doorc.Click += new EventHandler(mnuSuggestionsItem_Click);
             doorc.Tag = " DoorDown ";
             mnuSuggestions.Items.Add(doorc);
@@ -107,7 +107,7 @@ namespace button_tester
             mnuSuggestions.Items.Add(new ToolStripSeparator());
 
             // customize
-            ToolStripMenuItem mnuc = new ToolStripMenuItem("Customize...");
+            var mnuc = new ToolStripMenuItem("Customize...");
             mnuc.Click += new EventHandler(mnuSuggestionsCustomize_Click);
             mnuSuggestions.Items.Add(mnuc);
         }
@@ -131,7 +131,7 @@ namespace button_tester
 
         private void btnAutoComplete_Click(object sender, EventArgs e)
         {
-            Point pt = PointToScreen(
+            var pt = PointToScreen(
                 new Point(btnAutoComplete.Left + btnAutoComplete.Width,
                     btnAutoComplete.Top));
 

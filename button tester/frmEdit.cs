@@ -39,7 +39,7 @@ namespace button_tester
                 // we're in edit mode
                 if (ActionContainer.action is Settings.PayloadClass.ActionButtonPress)
                 {
-                    Settings.PayloadClass.ActionButtonPress abp =
+                    var abp =
                         (Settings.PayloadClass.ActionButtonPress)ActionContainer.action;
 
                     // we're editing a button press action
@@ -59,7 +59,7 @@ namespace button_tester
                 else if (ActionContainer.action is Settings.PayloadClass.ActionDelay)
                 {
                     // we're editing a delay action
-                    Settings.PayloadClass.ActionDelay delay = (Settings.PayloadClass.ActionDelay)ActionContainer.action;
+                    var delay = (Settings.PayloadClass.ActionDelay)ActionContainer.action;
                     txtRangeStart.Text = delay.Range.First.ToString();
                     txtRangeEnd.Text = delay.Range.Second.ToString();
 
@@ -109,7 +109,7 @@ namespace button_tester
                         start <= end && start >= 0)
                     {
                         ActionContainer.action = new Settings.PayloadClass.ActionButtonPress();
-                        Settings.PayloadClass.ActionButtonPress abp =
+                        var abp =
                             (Settings.PayloadClass.ActionButtonPress)ActionContainer.action;
 
                         foreach (var btn in lstButtons.SelectedItems)

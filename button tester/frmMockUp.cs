@@ -52,7 +52,7 @@ namespace button_tester
             int x = 5, y = 5, h = 32, w = 32, s = 5;
             Label lbl;
 
-            for (int i = 0; i < 16; ++i)
+            for (var i = 0; i < 16; ++i)
             {
                 lbl = new Label();
                 lbl.Text = "D" + (i + 1);
@@ -117,7 +117,7 @@ namespace button_tester
 
         void lbl_Click(object sender, EventArgs e)
         {
-            Control cnt = sender as Control;
+            var cnt = sender as Control;
 
             if (cnt == Up || cnt == Down || cnt == Still)
                 Up.BackColor = Down.BackColor = Still.BackColor = Color.Red;

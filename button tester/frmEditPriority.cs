@@ -39,7 +39,7 @@ namespace button_tester
                     po.Second==Settings.PayloadClass.Priority.PriorityState.NotUsed?CheckState.Unchecked:
                     CheckState.Indeterminate);
 
-            for (int i = 0; i < list.Count; ++i)
+            for (var i = 0; i < list.Count; ++i)
                 if (!priority.PriorityOrder.Any(w => w.First == i))
                     lstButtonOrder.Items.Add(list[i].Name, true);
 
@@ -63,8 +63,8 @@ namespace button_tester
             priority.Condition = new TestExpression(txtTestExpression.Text);
             priority.ExitCondition = new TestExpression(txtExitCondition.Text);
             priority.PriorityOrder = new List<Pair<int, Settings.PayloadClass.Priority.PriorityState>>();
-            for (int k = 0; k < lstButtonOrder.Items.Count; ++k)
-                for (int i = 0; i < settings.Payload.Buttons.Count; ++i)
+            for (var k = 0; k < lstButtonOrder.Items.Count; ++k)
+                for (var i = 0; i < settings.Payload.Buttons.Count; ++i)
                     if (settings.Payload.Buttons[i].Name == (string)lstButtonOrder.Items[k])
                     {
                         var cs=lstButtonOrder.GetItemCheckState(k);
@@ -85,7 +85,7 @@ namespace button_tester
             if (lstButtonOrder.SelectedIndex < 1)
                 return;
 
-            string tmp = lstButtonOrder.Items[lstButtonOrder.SelectedIndex - 1] as string;
+            var tmp = lstButtonOrder.Items[lstButtonOrder.SelectedIndex - 1] as string;
             lstButtonOrder.Items[lstButtonOrder.SelectedIndex - 1] = lstButtonOrder.Items[lstButtonOrder.SelectedIndex];
             lstButtonOrder.Items[lstButtonOrder.SelectedIndex] = tmp;
 
@@ -103,7 +103,7 @@ namespace button_tester
             if (lstButtonOrder.SelectedIndex < 0 || lstButtonOrder.SelectedIndex >= lstButtonOrder.Items.Count - 1)
                 return;
 
-            string tmp = lstButtonOrder.Items[lstButtonOrder.SelectedIndex] as string;
+            var tmp = lstButtonOrder.Items[lstButtonOrder.SelectedIndex] as string;
             lstButtonOrder.Items[lstButtonOrder.SelectedIndex] = lstButtonOrder.Items[lstButtonOrder.SelectedIndex + 1];
             lstButtonOrder.Items[lstButtonOrder.SelectedIndex + 1] = tmp;
 

@@ -15,8 +15,7 @@ namespace button_tester
 
         public static bool Validate(string expr, Settings settings)
         {
-            bool valid;
-            Parse(expr, true, out valid, null, null, settings);
+            Parse(expr, true, out var valid, null, null, settings);
 
             return valid;
         }
@@ -28,8 +27,7 @@ namespace button_tester
 
         public bool Evaluate(int[] dstate, double[] astate, Settings settings)
         {
-            bool valid;
-            return Parse(Expression, false, out valid, dstate, astate, settings).Value;
+            return Parse(Expression, false, out var valid, dstate, astate, settings).Value;
         }
 
         private enum OperandType
@@ -53,15 +51,15 @@ namespace button_tester
         private static string PreProcess(string expr, Dictionary<string, string> names,
             string strdu, string strdd, string strds)
         {
-            StringBuilder sb = new StringBuilder(expr.Length * 2);
+            var sb = new StringBuilder(expr.Length * 2);
 
-            for (int i = 0; i < expr.Length; ++i)
+            for (var i = 0; i < expr.Length; ++i)
             {
-                char c = expr[i];
+                var c = expr[i];
 
                 if (c == 'd' || c=='D')
                 {
-                    string rest = expr.Substring(i);
+                    var rest = expr.Substring(i);
                     if (rest.StartsWith("doorup", StringComparison.InvariantCultureIgnoreCase))
                     {
                         sb.Append(strdu);
@@ -82,10 +80,10 @@ namespace button_tester
                 }
                 else if (c == '[')
                 {
-                    int end = expr.IndexOf(']', i);
+                    var end = expr.IndexOf(']', i);
                     if (end >= 0)
                     {
-                        string val = expr.Substring(i + 1, end - i-1);
+                        var val = expr.Substring(i + 1, end - i-1);
                         if (names.ContainsValue(val))
                         {
                             sb.Append(names.First(w=>w.Value==val).Key);
@@ -117,8 +115,8 @@ namespace button_tester
 
             valid = true;
             bool? result = null;
-            OperandType ot = OperandType.First;
-            int index = 0;
+            var ot = OperandType.First;
+            var index = 0;
 
             // handle doorup/down/still
             string strdu = "(a1>" + settings.Payload.ZeroToleranceHigh + ")",
@@ -160,7 +158,7 @@ namespace button_tester
                         return null;
                     }
 
-                    bool? res = Parse(expr.Substring(index + 1, ending - index - 2), validateOnly,
+                    var res = Parse(expr.Substring(index + 1, ending - index - 2), validateOnly,
                         out valid, dstate, astate, settings);
                     index = ending;
                     if (!valid)
@@ -215,7 +213,7 @@ namespace button_tester
                         return null;
                     }
 
-                    int ending = index + 1;
+                    var ending = index + 1;
                     if (expr[index] == 'a' || expr[index] == 'A' || expr[index] == 'd' || expr[index] == 'D')
                     {
                         while (ending < expr.Length && char.IsNumber(expr[ending]))
@@ -234,7 +232,7 @@ namespace button_tester
                         valid = false;
                         return null;
                     }
-                    string channel = expr.Substring(index, ending - index);
+                    var channel = expr.Substring(index, ending - index);
                     index = ending;
 
                     // eat space
@@ -254,7 +252,7 @@ namespace button_tester
                         if (index + 1 < expr.Length)
                             if (expr[index + 1] == '=')
                                 ++ending;
-                    string comparison = expr.Substring(index, ending - index + 1);
+                    var comparison = expr.Substring(index, ending - index + 1);
                     index = ending + 1;
 
                     // eat space
@@ -273,8 +271,7 @@ namespace button_tester
 
                     if (channel[0] == 'a' || channel[0] == 'A')
                     {
-                        double number;
-                        if (!double.TryParse(expr.Substring(index, ending - index + 1), out number))
+                        if (!double.TryParse(expr.Substring(index, ending - index + 1), out var number))
                         {
                             valid = false;
                             return null;
@@ -285,8 +282,8 @@ namespace button_tester
                             bool res;
                             try
                             {
-                                int cn = int.Parse(channel.Substring(1));
-                                double cv = astate[cn - 1];
+                                var cn = int.Parse(channel.Substring(1));
+                                var cv = astate[cn - 1];
 
                                 switch (comparison)
                                 {
@@ -326,8 +323,7 @@ namespace button_tester
                     }
                     else
                     {
-                        int number;
-                        if (!int.TryParse(expr.Substring(index, ending - index + 1), out number))
+                        if (!int.TryParse(expr.Substring(index, ending - index + 1), out var number))
                         {
                             valid = false;
                             return null;
@@ -338,8 +334,8 @@ namespace button_tester
                             bool res;
                             try
                             {
-                                int cn = int.Parse(channel.Substring(1));
-                                int cv = dstate[cn - 1];
+                                var cn = int.Parse(channel.Substring(1));
+                                var cv = dstate[cn - 1];
 
                                 switch (comparison)
                                 {
